@@ -57,13 +57,16 @@
 <script>
 var divToChange = document.getElementById("ifFailure");
 function submitRegister() {
+
+  if (!isValidInput()) return;
+
   var anObj = new XMLHttpRequest();
   var username = document.getElementById("userName").value;
   var password = document.getElementById("passWord").value;
   var zipcode = document.getElementById("zipcode").value;
   console.log(username + password + zipcode);
   anObj.open("GET", "controller.php?action=register&email=" + username + "&password=" + password + "&zipcode=" + zipcode, true);
-  anObj.send();
+  anObj.send(); // Might also want to pass all the register info through a post to /register for security
 
   anObj.onreadystatechange = function () {
       if (anObj.readyState == 4 && anObj.status == 200) {
@@ -81,6 +84,51 @@ function submitRegister() {
       }
    }
  }
+  
+ function isValidInput() {
+    let isValid = true;
+	let email1 = document.getElementById('userName');
+	let email2 = document.getElementById('userName2');
+	let password = document.getElementById('passWord');
+	let failDiv = document.getElementById('ifFailure');  // Also using this div for these types of errors, if that works
+	let failHTML = '<ul>';
+
+	let strongPasswordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+	// Above requires password to have at least one lowercase letter, one uppercase, one digit, one special char,
+	//   and at least 8 chars total
+
+	// Could check email structure here as well
+
+	if (email1.value() == email2.value()) {  // Checks that both emails are the same
+		email1.classList.remove('error');
+		email2.classList.remove('error');
+	}
+	else {
+		email1.classList.add('error');
+		email2.classList.add('error');
+		failHTML += '<li>Emails must match</li>';
+		isValid = false;
+	}
+
+	if (strongPasswordRe.test(password.value())) {
+		password.classList.remove('error');
+	}
+	else {
+		password.classList.add('error');
+		failHTML += '<li>Password must contain at least: <ul><li>1 lowercase character</li><li>1 uppercase character</li><li>1 special character</li><li>8 characters total</li></li>';
+		isValid = false;
+	}
+
+	if (isValid == false) {
+		failDiv.innerHTML = failHTML;
+		failDiv.css('display', 'inline-block');  // Not sure if I did this correctly
+	}
+	else {
+		failDiv.css('display', 'none');
+	}
+	
+    return isValid;
+}
 
 </script>
 </body>

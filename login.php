@@ -81,6 +81,7 @@ function submitRegister() {
   var anObj = new XMLHttpRequest();
   var username = document.getElementById("userName").value;
   var password = document.getElementById("passWord").value;
+  // Might want to do a post to /login, putting username and hashed password in the body
   anObj.open("GET", "controller.php?action=login&email=" + username + "&password=" + password , true);
   anObj.send();
 
@@ -101,16 +102,17 @@ function submitRegister() {
           	}
       }
    }
- }
-	function openNav() { document.getElementById("menu").style.width = "250px";}
+}
 
-	function closeNav() {document.getElementById("menu").style.width = "0";}
+function openNav() { document.getElementById("menu").style.width = "250px";}
+
+function closeNav() {document.getElementById("menu").style.width = "0";}
 
 function logout() {
 
   var ajax = new XMLHttpRequest();
   ajax.open("GET", "controller.php?action=logout", true);
-  ajax.send();
+  ajax.send();  // Logging out might need local storage of the login info to be cleared, not sure though
     ajax.onreadystatechange = function(){
       if(ajax.readyState==4 && ajax.status==200){
         window.location.replace("homepage.php");
