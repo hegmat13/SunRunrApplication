@@ -161,7 +161,7 @@ Main Menu*/
 }
 .registerButton{
 	text-align: center;
-	background-color: #545AA7;
+	background-color: #E09695;
 	color: white;
 	padding: 9px;
 	width: 150px;
@@ -171,29 +171,9 @@ Main Menu*/
 .registerButtonToCenter{
 	text-align: center;
 }
-.homeButton{
-	background-color: #545AA7;
-	color: white;
-	padding: 7px;
-	width: 55px;
-	border-radius: 6px;
-	font-size: 12px;
-	margin-left: 10px;
-}
 .haveAccount{
-	color: blue;
+	color: #E09695;
 }
-/* For products html page*/
-.removeReviewButton{
-background-color: #B22222;
-color: white;
-padding: 7px;
-width: 100px;
-border-radius: 6px;
-font-size: 12px;
-margin-left: 10px;
-}
-
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
@@ -205,3 +185,4 @@ to {top:0; opacity:1}
 from {top:-300px; opacity:0}
 to {top:0; opacity:1}
 }
+
