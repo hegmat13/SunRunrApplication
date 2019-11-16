@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--set up for top of page-->
+	<meta charset="UTF-8">
+
+	<title>SunRunr</title>
+	<link rel="icon" href="images/runMan.ico">
+	
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+</head>
+
+<body onload = "loadImage()">
+
+<!--MENU -->
+  <div class = "menu" id = "menu" style="width: 0px;">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <a class = "menu1" href = "homepage.html">Home</a><br>
+    <a class = "menu1" href = "aboutUs.html">About Us</a><br>
+    <a class = "menu1" href = "summary.html">Summary View</a><br>
+    <a class = "menu1" href = "activitySummary.html">Activities Summary View</a><br>
+    <a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br>
+    <a class = "menu1" href = "registerDevice.html">Register a device</a><br>
+      <a class = "menu1" href = "login.html">Login</a><br>
+      <a class = "menu1" href = "registration.html">Register</a>
+  </div> 
+<!--END OF MENU-->
+<div class = "bigDiv">
+
+		<h1 class = "mainTitle">Weekly Weather Forecast</h1>
+	<span class = "spanStyle" onclick="openNav()"><img src = "images/runningManSidebar.svg" class = "menuButtonImage"></span>
+	<br><br><br><br><br><br>
+		
+	<div class = "welcomeToOurPage">
+			<p class = "subTitleMain">We will put our data in here</p>
+			<p class = "bodyText"> XXXX.</p>
+		</div>
+</div>
+<script>
+
+	function openNav() { document.getElementById("menu").style.width = "250px";}
+
+	function closeNav() {document.getElementById("menu").style.width = "0";}
+
+function logout() {
+
+  var ajax = new XMLHttpRequest();
+  ajax.open("GET", "controller.php?action=logout", true);
+  ajax.send();
+    ajax.onreadystatechange = function(){
+      if(ajax.readyState==4 && ajax.status==200){
+        window.location.replace("homepage.php");
+      }
+    }
+}
+</script>
+
+</body>
+</html>
