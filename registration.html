@@ -40,7 +40,7 @@
 
 				<br>
 
-				<input type = "password" class = "inputPassword" type = "text" id = "passWord" required>
+				<input type = "password" class = "inputPassword" type = "text" id = "password" required>
 				
 				<br>
 				<div id="ifFailure"></div>
@@ -60,43 +60,54 @@
 		</div>
 	</form>
 </div>
+
 <script>
-var divToChange = document.getElementById("ifFailure");
+var divToChange = $("#ifFailure");
+
 function submitRegister() {
+  let username = $('#username').val();
+  let password = $('#password').val();
+  let zipcode = $('#zipcode').val();
 
   if (!isValidInput()) return;
 
-  var anObj = new XMLHttpRequest();
-  var username = document.getElementById("userName").value;
-  var password = document.getElementById("passWord").value;
-  var zipcode = document.getElementById("zipcode").value;
-  console.log(username + password + zipcode);
-  anObj.open("GET", "controller.php?action=register&email=" + username + "&password=" + password + "&zipcode=" + zipcode, true);
-  anObj.send(); // Might also want to pass all the register info through a post to /register for security
+  $.ajax({
+   url: '/users/register',
+   type: 'POST',
+   contentType: 'application/json',
+   data: JSON.stringify({email:email, zipcode:zipcode, password:password}),
+   dataType: 'json'
+  })
+    .done(registerSuccess)
+    .fail(registerError);  
+}
 
-  anObj.onreadystatechange = function () {
-      if (anObj.readyState == 4 && anObj.status == 200) {
-      		// Ask the server if the registration is legit
-          	var success = JSON.parse(anObj.responseText);
+function registerSuccess(data, textStatus, jqXHR) {
+  if (data.success) {  
+    window.location = "homepage.html";
+  }
+  else {
+    divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
+    divToChange.show();
+  }
+}
 
-          	// Login failed
-          	if(!success){
-          		divToChange.innerHTML = "Username already exists";
-				document.getElementById("registerId").reset();
-			// Login succeeded 
-          	} else {
-          		window.location.replace("homepage.php");
-          	}
-      }
-   }
- }
+function registerError(jqXHR, textStatus, errorThrown) {
+  if (jqXHR.statusCode == 404) {
+    divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
+		divToChange.show();
+  }
+  else {
+    divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.responseJSON.message + "</span>");
+    divToChange.show();
+  }
+}
   
- function isValidInput() {
+function isValidInput() {
     let isValid = true;
-	let email1 = document.getElementById('userName');
-	let email2 = document.getElementById('userName2');
-	let password = document.getElementById('passWord');
-	let failDiv = document.getElementById('ifFailure');  // Also using this div for these types of errors, if that works
+	let email1 = $('#userName').val();
+	let email2 = $('#userName2').val();
+	let password = $('#password').val();
 	let failHTML = '<ul>';
 
 	let strongPasswordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
@@ -105,36 +116,30 @@ function submitRegister() {
 
 	// Could check email structure here as well
 
-	if (email1.value() == email2.value()) {  // Checks that both emails are the same
-		email1.classList.remove('error');
-		email2.classList.remove('error');
-	}
-	else {
-		email1.classList.add('error');
-		email2.classList.add('error');
-		failHTML += '<li>Emails must match</li>';
+	if (email1 != email2) {  // Checks that both emails are the same
+		failHTML += ("<li><span class='red-text text-darken-2'>Emails do not match.</span></li>");
 		isValid = false;
 	}
 
-	if (strongPasswordRe.test(password.value())) {
-		password.classList.remove('error');
-	}
-	else {
-		password.classList.add('error');
-		failHTML += '<li>Password must contain at least: <ul><li>1 lowercase character</li><li>1 uppercase character</li><li>1 special character</li><li>8 characters total</li></li>';
+	if (!strongPasswordRe.test(password)) {
+		failHTML += '<li><span class=\'red-text text-darken-2\'>Password must contain at least: <ul><li>1 lowercase character</li><li>1 uppercase character</li><li>1 special character</li><li>8 characters total</li></span></li>';
 		isValid = false;
 	}
+
+	failHTML += '</ul>';
 
 	if (isValid == false) {
-		failDiv.innerHTML = failHTML;
-		failDiv.css('display', 'inline-block');  // Not sure if I did this correctly
-	}
-	else {
-		failDiv.css('display', 'none');
+		divToChange.html(failHTML);
+    	divToChange.show();
 	}
 	
     return isValid;
 }
+
+$(function () {
+  $('.registerButton').click(submitRegister);
+});
+
 function openNav() { document.getElementById("menu").style.width = "250px";}
 
 function closeNav() {document.getElementById("menu").style.width = "0";}
