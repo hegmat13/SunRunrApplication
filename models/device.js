@@ -3,7 +3,7 @@ var db = require("../db");
 var deviceSchema = new db.Schema({
     apikey:       String,
     deviceId:     String,
-    userEmail:    String,
+    username:     String,
     lastContact:  { type: Date, default: Date.now }
 });
 

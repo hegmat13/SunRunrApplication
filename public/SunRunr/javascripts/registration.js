@@ -11,7 +11,7 @@ function submitRegister() {
    url: '/users/register',
    type: 'POST',
    contentType: 'application/json',
-   data: JSON.stringify({email:email, zipcode:zipcode, password:password}),
+   data: JSON.stringify({username:username, zipcode:zipcode, password:password}),
    dataType: 'json'
   })
     .done(registerSuccess)
@@ -19,28 +19,30 @@ function submitRegister() {
 }
 
 function registerSuccess(data, textStatus, jqXHR) {
-  if (data.success) {  
-    window.location = "homepage.html";
-  }
-  else {
-    divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
-    divToChange.show();
-  }
+  window.location = "homepage.html"
+  // if (data.success) {  
+  //   window.location = "homepage.html";
+  // }
+  // else {
+  //   divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
+  //   divToChange.show();
+  // }
 }
 
 function registerError(jqXHR, textStatus, errorThrown) {
-  if (jqXHR.statusCode == 404) {
-    divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
-		divToChange.show();
-  }
-  else {
-    divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.responseJSON.message + "</span>");
-    divToChange.show();
-  }
+  window.location = "homepage.html"
+  // if (jqXHR.statusCode == 404) {
+  //   divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
+	// 	divToChange.show();
+  // }
+  // else {
+  //   divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.responseJSON.message + "</span>");
+  //   divToChange.show();
+  // }
 }
   
 function isValidInput() {
-    let isValid = true;
+  let isValid = true;
 	let email1 = $('#userName').val();
 	let email2 = $('#userName2').val();
 	let password = $('#password').val();
@@ -66,7 +68,7 @@ function isValidInput() {
 
 	if (isValid == false) {
 		divToChange.html(failHTML);
-    	divToChange.show();
+    divToChange.show();
 	}
 	
     return isValid;

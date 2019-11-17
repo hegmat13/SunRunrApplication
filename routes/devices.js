@@ -62,13 +62,13 @@ router.post('/register', function(req, res, next) {
     return res.status(400).json(responseJson);
   }
 
-  let email = "";
+  let username = "";
     
-  // If authToken provided, use email in authToken 
+  // If authToken provided, use username in authToken 
   if (req.headers["x-auth"]) {
     try {
       let decodedToken = jwt.decode(req.headers["x-auth"], secret);
-      email = decodedToken.email;
+      username = decodedToken.username;
     }
     catch (ex) {
       responseJson.message = "Invalid authorization token.";
@@ -76,12 +76,12 @@ router.post('/register', function(req, res, next) {
     }
   }
   else {
-    // Ensure the request includes the email parameter
-    if( !req.body.hasOwnProperty("email")) {
-      responseJson.message = "Invalid authorization token or missing email address.";
+    // Ensure the request includes the username parameter
+    if( !req.body.hasOwnProperty("username")) {
+      responseJson.message = "Invalid authorization token or missing username address.";
       return res.status(400).json(responseJson);
     }
-    email = req.body.email;
+    username = req.body.username;
   }
     
   // See if device is already registered
@@ -94,10 +94,10 @@ router.post('/register', function(req, res, next) {
       // Get a new apikey
 	   deviceApikey = getNewApikey();
 	    
-	    // Create a new device with specified id, user email, and randomly generated apikey.
+	    // Create a new device with specified id, username, and randomly generated apikey.
       let newDevice = new Device({
         deviceId: req.body.deviceId,
-        userEmail: email,
+        username: username,
         apikey: deviceApikey
       });
 
@@ -133,7 +133,7 @@ router.post('/ping', function(req, res, next) {
         return res.status(400).json(responseJson);
     }
     
-    // If authToken provided, use email in authToken 
+    // If authToken provided, use username in authToken 
     try {
         let decodedToken = jwt.decode(req.headers["x-auth"], secret);
     }
