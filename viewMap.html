@@ -186,6 +186,7 @@
 	});
 	map.addOverlay(popup);
 	var myFeature;//magic variable to fix a bug
+	
 	//Check if you're over a feature when you click
 	map.on('click', function(evt) {
 	  myFeature = map.forEachFeatureAtPixel(evt.pixel,
