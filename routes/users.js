@@ -43,7 +43,8 @@ router.post('/register', function(req, res, next) {
       else {
         var newUser = new User ({
             email: req.body.username,
-            passwordHash: hash
+            passwordHash: hash,
+            zipcode: req.body.zipcode
         });
         
         newUser.save(function(err, user) {
@@ -77,7 +78,8 @@ router.get("/account" , function(req, res) {
          else {
             userStatus['success'] = true;
             userStatus['email'] = user.email;
-            // userStatus['lastAccess'] = user.lastAccess;  // May want more statements like these depending on what's in user model
+            userStatus['lastAccess'] = user.lastAccess;
+            userStatus['zipcode'] = user.zipcode;
             
             // Find devices based on decoded token
 		      Device.find({ userEmail : decodedToken.email}, function(err, devices) {
