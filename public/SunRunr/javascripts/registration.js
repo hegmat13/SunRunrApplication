@@ -5,21 +5,27 @@ function submitRegister() {
   let password = $('#password').val();
   let zipcode = $('#zipcode').val();
 
+  window.location = "./homepage.html";
   if (!isValidInput()) return;
 
-  $.ajax({
-   url: '/users/register',
-   type: 'POST',
-   contentType: 'application/json',
-   data: JSON.stringify({username:username, zipcode:zipcode, password:password}),
-   dataType: 'json'
-  })
-    .done(registerSuccess)
-    .fail(registerError);  
+  try {
+    $.ajax({
+    url: '/users/register',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({username:username, zipcode:zipcode, password:password}),
+    dataType: 'json'
+    })
+      .done(registerSuccess)
+      .fail(registerError); 
+  } 
+  catch (ex) {
+    window.location = "./homepage.html";
+  }
 }
 
 function registerSuccess(data, textStatus, jqXHR) {
-  window.location = "homepage.html"
+  window.location = "./homepage.html";  // TODO: Uncomment below
   // if (data.success) {  
   //   window.location = "homepage.html";
   // }
@@ -30,7 +36,7 @@ function registerSuccess(data, textStatus, jqXHR) {
 }
 
 function registerError(jqXHR, textStatus, errorThrown) {
-  window.location = "homepage.html"
+  window.location = "./homepage.html";  // TODO: Uncomment below
   // if (jqXHR.statusCode == 404) {
   //   divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
 	// 	divToChange.show();
@@ -55,9 +61,13 @@ function isValidInput() {
 	// Could check email structure here as well
 
 	if (email1 != email2) {  // Checks that both emails are the same
-		failHTML += ("<li><span class='red-text text-darken-2'>Emails do not match.</span></li>");
+    $('#userName')
+    failHTML += ("<li><span class='red-text text-darken-2'>Emails do not match.</span></li>");
 		isValid = false;
-	}
+  }
+  else {
+
+  }
 
 	if (!strongPasswordRe.test(password)) {
 		failHTML += '<li><span class=\'red-text text-darken-2\'>Password must contain at least: <ul><li>1 lowercase character</li><li>1 uppercase character</li><li>1 special character</li><li>8 characters total</li></span></li>';
@@ -71,7 +81,7 @@ function isValidInput() {
     divToChange.show();
 	}
 	
-    return isValid;
+  return isValid;
 }
 
 $(function () {
