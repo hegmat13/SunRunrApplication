@@ -5,7 +5,7 @@ let fs = require('fs');
 let jwt = require("jwt-simple");
 
 /* Authenticate user */
-var secret = fs.readFileSync(__dirname + '/../../jwtkey').toString();
+let secret = "secret"; //fs.readFileSync(__dirname + '/../../jwtkey').toString();
 
 // Function to generate a random apikey consisting of 32 characters
 function getNewApikey() {
@@ -94,7 +94,7 @@ router.post('/register', function(req, res, next) {
       // Get a new apikey
 	   deviceApikey = getNewApikey();
 	    
-	    // Create a new device with specified id, username, and randomly generated apikey.
+	    // Create a new device with specified id, user username, and randomly generated apikey.
       let newDevice = new Device({
         deviceId: req.body.deviceId,
         username: username,
