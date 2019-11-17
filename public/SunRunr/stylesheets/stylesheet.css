@@ -7,7 +7,7 @@ body{
 	}
 
 .bigDiv{
-	background-image: url("images/oceanRun.jpg");
+	background-image: url("../images/oceanRun.jpg");
 	margin: 50px 75px 0px 75px;
 	border-radius: 12px;
 	padding:10px;
@@ -191,7 +191,7 @@ to {top:0; opacity:1}
 	width: 60%;
 	height: 500px;
 	margin: 0 auto;
-	padding: 2px
+	padding: 2px;
 	border-radius: 12px;
 	border: 6px solid black;
 }
