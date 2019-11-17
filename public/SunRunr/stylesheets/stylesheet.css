@@ -15,6 +15,21 @@ body{
 	max-width: 1175px;
 
 }
+.bigDiv2{
+	background: rgba(135,202,197, 0.8);
+
+	border: 3px solid #9EAEB3;
+	border-color: rgba(135,202,197, 0.8);
+
+	border-radius: 11px;
+
+	padding: 10px 10px 10px 10px;
+	margin: 50px auto;
+
+	width: 500px;
+
+
+}
 /*This is for the background banner on the first page*/ 
 /*Sidebar Menu: teal blue color*/
 /*NM*/
@@ -35,6 +50,11 @@ on the Main Menu*/
 /*NM*/
 .menuButtonImage{
 	height: 75px;
+}
+.menuButtonImage2{
+	height: 75px;
+	margin-top: 120px;
+	margin-left: 20px;
 }
 /*This is for the close button on the 
 Main Menu*/
@@ -173,6 +193,11 @@ Main Menu*/
 }
 .haveAccount{
 	color: #E09695;
+}
+
+.haveAccount :hover{
+	background-color: #E09695;
+	color: white;
 }
 
 /* Add Animation */
