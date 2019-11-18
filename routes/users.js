@@ -43,15 +43,15 @@ router.post('/register', function(req, res, next) {
          res.status(400).json({success : false, message : 'error1'});         
       }
       else {
-        var newUser = new User ({
-            username: req.body.username,
-            passwordHash: hash,
-            zipcode: req.body.zipcode
-        });
+        console.log(req.body); 
+        var newUser = new User;
+        newUser.username = req.body.username;
+        newUser.passwordHash =  hash;
+        newUser.zipcode = req.body.zipcode;
         
         newUser.save(function(err, user) {
           if (err) {
-             res.status(400).json({success : false, message : 'error2'});         
+             res.status(400).json({success : false, message : newUser.username});         
           }
           else {
              res.status(201).json({success : true, message : "Account with username " + user.username + "has been created."});                      

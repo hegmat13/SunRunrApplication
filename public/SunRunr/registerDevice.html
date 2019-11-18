@@ -55,30 +55,22 @@
 	function closeNav() {document.getElementById("menu").style.width = "0";}
 	var divToChange = document.getElementById("ifFailure");
 	function submitRegister() {
-	var anObj = new XMLHttpRequest();
 	var deviceID = document.getElementById(".inputPassword").value;
-	// Might want to do a post to /login, putting username and hashed password in the body
-	anObj.open("POST", "http://ec2-18-221-169-9.us-east-2.compute.amazonaws.com:3000/register/?deviceID=" + deviceID, true);
-	anObj.send();
 
-	console.log("Sent it");
+    $.ajax({
+    url: '/devices/registerDevice',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({device:deviceID}),
+    dataType: 'json'
+    })
+      .done(registerSuccess)
+      .fail(registerError); 
 
-	anObj.onreadystatechange = function () {
-		if (anObj.readyState == 4 && anObj.status == 200) {  
-				var status = JSON.parse(anObj.responseText);
+	console.log("Sent it")
 
-				if(status == -1){
-					divToChange.innerHTML = "Username not registered";
-					document.getElementById("registerId").reset();
-				} else if(status == -2){
-					divToChange.innerHTML = "Invalid password";
-					document.getElementById("registerId").reset();
-				} else {
-					window.location.replace("products.php");
-				}
-		}
 	}
-	}
+	
 
 	function openNav() { document.getElementById("menu").style.width = "250px";}
 

@@ -1,7 +1,7 @@
 var divToChange = $("#ifFailure");
 
 function submitRegister() {
-  let username = $('#username').val();
+  let username = $('#userName').val();
   let password = $('#password').val();
   let zipcode = $('#zipcode').val();
 
