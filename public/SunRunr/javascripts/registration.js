@@ -5,12 +5,12 @@ function submitRegister() {
   let password = $('#password').val();
   let zipcode = $('#zipcode').val();
 
-  window.location = "./homepage.html";
+  // window.location = "./homepage.html";
   if (!isValidInput()) return;
 
   try {
     $.ajax({
-    url: '/users/register',
+    url: 'http://ec2-18-221-169-9.us-east-2.compute.amazonaws.com:3000/users/register',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({username:username, zipcode:zipcode, password:password}),
@@ -25,26 +25,26 @@ function submitRegister() {
 }
 
 function registerSuccess(data, textStatus, jqXHR) {
-  window.location = "./homepage.html";  // TODO: Uncomment below
-  // if (data.success) {  
-  //   window.location = "homepage.html";
-  // }
-  // else {
-  //   divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
-  //   divToChange.show();
-  // }
+  // window.location = "./homepage.html";  // TODO: Uncomment below
+  if (data.success) {  
+    window.location = "homepage.html";
+  }
+  else {
+    divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
+    divToChange.show();
+  }
 }
 
 function registerError(jqXHR, textStatus, errorThrown) {
-  window.location = "./homepage.html";  // TODO: Uncomment below
-  // if (jqXHR.statusCode == 404) {
-  //   divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
-	// 	divToChange.show();
-  // }
-  // else {
-  //   divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.responseJSON.message + "</span>");
-  //   divToChange.show();
-  // }
+  // window.location = "./homepage.html";  // TODO: Uncomment below
+  if (jqXHR.statusCode == 404) {
+    divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
+		divToChange.show();
+  }
+  else {
+    divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.responseJSON.message + "</span>");
+    divToChange.show();
+  }
 }
   
 function isValidInput() {
@@ -61,18 +61,22 @@ function isValidInput() {
 	// Could check email structure here as well
 
 	if (email1 != email2) {  // Checks that both emails are the same
-    $('#userName')
+    $('#userName2').addClass('error');
     failHTML += ("<li><span class='red-text text-darken-2'>Emails do not match.</span></li>");
 		isValid = false;
   }
   else {
-
+    $('#userName2').removeClass('error');
   }
 
 	if (!strongPasswordRe.test(password)) {
-		failHTML += '<li><span class=\'red-text text-darken-2\'>Password must contain at least: <ul><li>1 lowercase character</li><li>1 uppercase character</li><li>1 special character</li><li>8 characters total</li></span></li>';
+    $('#password').addClass('error');
+    failHTML += '<li><span class=\'red-text text-darken-2\'>Password must contain at least: <ul><li>1 lowercase character</li><li>1 uppercase character</li><li>1 special character</li><li>8 characters total</li></span></li>';
 		isValid = false;
-	}
+  }
+  else {
+    $('#password').removeClass('error');
+  }
 
 	failHTML += '</ul>';
 
