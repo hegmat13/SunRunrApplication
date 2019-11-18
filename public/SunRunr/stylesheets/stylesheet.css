@@ -195,12 +195,12 @@ Main Menu*/
 	text-align: center;
 }
 .haveAccount{
-	color: #E09695;
+    color: #E09695;
+    font-size: 16pt;
 }
 
-.haveAccount :hover{
-	background-color: #E09695;
-    color: white;
+.haveAccount:hover{
+    color: black;
     cursor: pointer;
 }
 
