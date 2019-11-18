@@ -51,7 +51,7 @@ router.post('/register', function(req, res, next) {
         
         newUser.save(function(err, user) {
           if (err) {
-             res.status(400).json({success : false, message : newUser.username});         
+             res.status(400).json({success : false, message : err.message});         
           }
           else {
              res.status(201).json({success : true, message : "Account with username " + user.username + "has been created."});                      
