@@ -1,0 +1,106 @@
+<?php
+	session_start();
+?>
+<html>
+<head>
+	<title>SunRunr Register A Device</title>
+	<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css">
+	<script src="app.js" defer></script>
+</head>
+
+<body>
+<!-- <button onclick="window.location.href='homepage.php'" class = "homeButton" width = 200px>Home</button> -->
+<!--MENU -->
+	<div class = "menu" id = "menu" style="width: 0px;">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+		<a class = "menu1" href = "homepage.html">Home</a><br>
+		<a class = "menu1" href = "aboutUs.html">About Us</a><br>
+		<a class = "menu1" href = "forecast.html">Weather Forecast</a><br>
+		<a class = "menu1" href = "summary.html">Summary View</a><br>
+		<a class = "menu1" href = "activitySummary.html">Activities Summary View</a><br>
+		<a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br>
+		<a class = "menu1" href = "login.html">Log In</a><br>
+	    <a class = "menu1" href = "registration.html">Register</a>
+	</div> 
+<!--END OF MENU-->
+<div class = "bigDiv">
+		<span class = "spanStyle" onclick="openNav()"><img src = "images/runningManSidebar.svg" class = "menuButtonImage2"></span>
+	<div class = "bigDiv2">
+		<h2 class = "subTitle">Register a Device</h2>
+
+		<p class = "registerButtonToCenter">stuff to register</p>
+
+		<form id = "registerId" onsubmit="submitRegister();return false;">
+			<div class = "registerPageDiv">
+				<div class = "rightColumn">
+
+					<input class = "inputPassword" type = "text" id = "regDevice" title = "Please enter a valid device id" placeholder = "0000000000000" required>
+					
+					<br>
+					<div id="ifFailure"></div>
+				</div>
+				<div class = "leftColumn">
+					Enter Device ID <br><br>
+				</div>
+			</div>
+			<br><br><br>
+			<div class = "registerButtonToCenter">
+				<button class = "registerButton"  type = "submit" value = "Register" >Register A Device</button>
+				<br><br>
+				Need to create an account?<br>
+				<a onclick = "window.location.href='registration.html'" class = "haveAccount">Register Now</a>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	function openNav() { document.getElementById("menu").style.width = "250px";}
+
+	function closeNav() {document.getElementById("menu").style.width = "0";}
+	var divToChange = document.getElementById("ifFailure");
+	function submitRegister() {
+	var anObj = new XMLHttpRequest();
+	var username = document.getElementById("userName").value;
+	var password = document.getElementById("passWord").value;
+	// Might want to do a post to /login, putting username and hashed password in the body
+	anObj.open("POST", "http://ec2-18-221-169-9.us-east-2.compute.amazonaws.com:3000/register/?email=" + username + "&password=" + password , true);
+	anObj.send();
+
+	console.log("Sent it");
+
+	anObj.onreadystatechange = function () {
+		if (anObj.readyState == 4 && anObj.status == 200) {  
+				var status = JSON.parse(anObj.responseText);
+
+				if(status == -1){
+					divToChange.innerHTML = "Username not registered";
+					document.getElementById("registerId").reset();
+				} else if(status == -2){
+					divToChange.innerHTML = "Invalid password";
+					document.getElementById("registerId").reset();
+				} else {
+					window.location.replace("products.php");
+				}
+		}
+	}
+	}
+
+	function openNav() { document.getElementById("menu").style.width = "250px";}
+
+	function closeNav() {document.getElementById("menu").style.width = "0";}
+/*
+	function logout() {
+
+	var ajax = new XMLHttpRequest();
+	ajax.open("GET", "controller.php?action=logout", true);
+	ajax.send();  // Logging out might need local storage of the login info to be cleared, not sure though
+		ajax.onreadystatechange = function(){
+		if(ajax.readyState==4 && ajax.status==200){
+			window.location.replace("homepage.php");
+		}
+		}
+	} */ 
+</script>
+</body>
+</html>
