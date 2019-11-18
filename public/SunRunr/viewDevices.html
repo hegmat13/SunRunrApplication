@@ -3,14 +3,12 @@
 ?>
 <html>
 <head>
-	<title>SunRunr Register A Device</title>
+	<title>SunRunr View Devices</title>
 	<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css">
 	<script src="app.js" defer></script>
 </head>
 
 <body>
-<!-- <button onclick="window.location.href='homepage.php'" class = "homeButton" width = 200px>Home</button> -->
-<!--MENU -->
 	<div class = "menu" id = "menu" style="width: 0px;">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
@@ -29,27 +27,11 @@
 	<div class = "bigDiv2">
 		<h2 class = "subTitle">Register a Device</h2>
 
-		<p class = "registerButtonToCenter">To register a new device, enter the device id below, and select 'register' <br> If you would like to view your devices, select "view devices" below</p>
+		<p class = "registerButtonToCenter">Here you can view your devices. To delete a device, simply click "delete" next to the device.</p>
 
+		<button class = "registerButton"  type = "submit" value = "Register">Delete</button>
 		<form id = "registerId" onsubmit="submitRegister();return false;">
-			<div class = "registerPageDiv">
-				<div class = "rightColumn">
 
-					<input class = "inputPassword" type = "text" id = "regDevice" title = "Please enter a valid device id" placeholder = "0000000000000" required>
-					
-					<br>
-					<div id="ifFailure"></div>
-				</div>
-				<div class = "leftColumn">
-					Enter Device ID <br><br>
-				</div>
-			</div>
-			<br><br><br>
-			<div class = "registerButtonToCenter">
-				<button id = "button" class = "registerButton"  type = "submit" value = "Register" >Register A Device</button>
-				<br><br>
-				<button onclick = "window.location.href='viewDevices.html'" class = "registerButton"  type = "submit" value = "Register" >View Devices</button>
-			</div>
 		</form>
 	</div>
 </div>

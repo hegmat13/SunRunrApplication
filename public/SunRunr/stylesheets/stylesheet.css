@@ -27,8 +27,9 @@ body{
 	margin: 50px auto;
 
 	width: 500px;
-
-
+}
+.registerButton:hover{
+	background-color: purple;
 }
 /*This is for the background banner on the first page*/ 
 /*Sidebar Menu: teal blue color*/
