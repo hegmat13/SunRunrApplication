@@ -48,7 +48,7 @@ function registerError(jqXHR, textStatus, errorThrown) {
 }
   
 function isValidInput() {
-  	let isValid = true;
+  let isValid = true;
 	let email1 = $('#userName').val();
 	let email2 = $('#userName2').val();
 	let password = $('#password').val();
@@ -82,7 +82,7 @@ function isValidInput() {
 
 	if (!strongPasswordRe.test(password)) {
 		$('#password').addClass('error');
-		failHTML += '<p><span class=\'red-text text-darken-2\'>Password must contain at least: <ul><li>1 lowercase character</li><li>1 uppercase character</li><li>1 special character</li><li>8 characters total</li></span></p>';
+		failHTML += '<p><span class=\'red-text text-darken-2\'>Password must contain at least: <ul><li>1 Lowercase character</li><li>1 Uppercase character</li><li>1 Special character</li><li>1 Number</li><li>8 Characters</li></span></p>';
 		isValid = false;
 	}
 	else {

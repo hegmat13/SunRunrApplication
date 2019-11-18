@@ -39,7 +39,8 @@ router.post('/login', function(req, res, next) {
 router.post('/register', function(req, res, next) {
    bcrypt.hash(req.body.password, 10, function(err, hash) {
       if (err) {
-         res.status(400).json({success : false, message : err.errmsg});         
+         // res.status(400).json({success : false, message : err.errmsg});         
+         res.status(400).json({success : false, message : 'error1'});         
       }
       else {
         var newUser = new User ({
@@ -50,7 +51,7 @@ router.post('/register', function(req, res, next) {
         
         newUser.save(function(err, user) {
           if (err) {
-             res.status(400).json({success : false, message : err.errmsg});         
+             res.status(400).json({success : false, message : 'error2'});         
           }
           else {
              res.status(201).json({success : true, message : "Account with username " + user.username + "has been created."});                      
