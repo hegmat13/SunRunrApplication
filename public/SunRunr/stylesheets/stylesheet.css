@@ -8,9 +8,9 @@ body{
 
 .bigDiv{
 	background-image: url("../images/oceanRun.jpg");
-	margin: 50px 75px 0px 75px;
+	margin: 50px 10% 0px 10%;
 	border-radius: 12px;
-	padding:10px;
+	padding: 10px;
 	max-height: 780px;
 	max-width: 1175px;
 
@@ -30,6 +30,7 @@ body{
 }
 .registerButton:hover{
 	background-color: purple;
+    cursor: pointer;
 }
 /*This is for the background banner on the first page*/ 
 /*Sidebar Menu: teal blue color*/
@@ -76,7 +77,8 @@ Main Menu*/
 	color: white;
 }
 .menu1:hover{
-	background-color: #E09695;
+    background-color: #E09695;
+    cursor: pointer;
 }
 .mainTitle{
 	font-family: "Copperplate Gothic";
@@ -198,7 +200,8 @@ Main Menu*/
 
 .haveAccount :hover{
 	background-color: #E09695;
-	color: white;
+    color: white;
+    cursor: pointer;
 }
 
 /* Add Animation */
