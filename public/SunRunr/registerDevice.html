@@ -68,24 +68,32 @@ function openNav() { document.getElementById("menu").style.width = "250px";}
 
 function closeNav() {document.getElementById("menu").style.width = "0";}
 
-function logout(){document.getElementById("demo").style.color = "red";}
+function logout(){
+    document.getElementById("demo").style.color = "red";
+    window.localStorage.removeItem('authToken');
+    window.location.replace('login.html');
+}
 
 	var divToChange = document.getElementById("ifFailure");
+
 	function submitRegister() {
-	var deviceID = document.getElementById(".inputPassword").value;
+		var deviceID = document.getElementById(".inputPassword").value;
 
-    $.ajax({
-    url: '/devices/registerDevice',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({device:deviceID}),
-    dataType: 'json'
-    })
-      .done(registerSuccess)
-      .fail(registerError); 
+	    document.getElementById("demo").style.color = "red";
+	    window.localStorage.removeItem('authToken');
+	    window.location.replace('login.html');
 
-	console.log("Sent it")
+	    $.ajax({
+	    url: '/devices/registerDevice',
+	    type: 'POST',
+	    contentType: 'application/json',
+	    data: JSON.stringify({device:deviceID}),
+	    dataType: 'json'
+	    })
+	      .done(registerSuccess)
+	      .fail(registerError); 
 
+		console.log("Sent it")
 	}
 	// function openNav() { document.getElementById("menu").style.width = "250px";}
 

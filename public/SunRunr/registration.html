@@ -83,7 +83,11 @@
 
 // function closeNav() {document.getElementById("menu").style.width = "0";}
 
-function logout(){document.getElementById("demo").style.color = "red";}
+function logout(){
+    document.getElementById("demo").style.color = "red";
+    window.localStorage.removeItem('authToken');
+    window.location.replace('login.html');
+}
 </script>
 </body>
 </html>
