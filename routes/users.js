@@ -7,33 +7,33 @@ let bcrypt = require("bcryptjs");
 let jwt = require("jwt-simple");
 
 /* Authenticate user */
-var secret = "secret" //fs.readFileSync(__dirname + '/../../jwtkey').toString();
+var secret = 'secret'; //fs.readFileSync(__dirname + '/../../jwtkey').toString();
 
-/*
+
 router.post('/login', function(req, res, next) {
-  User.findOne(   username: req.body  username}, function(err, user) {
+  User.findOne({username: req.body.username}, function(err, user) {
     if (err) {
        res.status(401).json({success : false, message : "Can't connect to DB."});         
     }
     else if(!user) {
-       res.status(401).json({success : false, message :  username or password invalid."});         
+       res.status(401).json({success : false, message :  "username or password invalid."});         
     }
     else {
       bcrypt.compare(req.body.password, user.passwordHash, function(err, valid) {
          if (err) {
-           res.status(401).json({success : false, message : "Error authenticating. Contact support."});         
+           res.status(401).json({success : false, message : "Error authenticating. Contact support." + user.passwordHash});         
          }
          else if(valid) {
-            var authToken = jwt.encode(   username: req.body  username}, secret);
+            var authToken = jwt.encode({username: req.body.username}, secret);
             res.status(201).json({success:true, authToken: authToken});
          }
          else {
-            res.status(401).json({success : false, message :   username or password invalid."});         
+            res.status(401).json({success : false, message : "username or password invalid."});         
          }
       });
     }
   });
-}); */ 
+});
 
 /* Register a new user */
 router.post('/register', function(req, res, next) {
@@ -46,7 +46,7 @@ router.post('/register', function(req, res, next) {
         console.log(req.body); 
         var newUser = new User;
         newUser.username = req.body.username;
-        newUser.passwordHash =  hash;
+        newUser.passwordHash = hash;
         newUser.zipcode = req.body.zipcode;
         
         newUser.save(function(err, user) {

@@ -1,14 +1,12 @@
 var divToChange = $("#ifFailure");
 
 function submitRegister() {
-  let username = $('#userName').val();
-  let password = $('#password').val();
-  let zipcode = $('#zipcode').val();
+	let username = $('#userName').val();
+	let password = $('#password').val();
+	let zipcode = $('#zipcode').val();
 
-  // window.location = "./homepage.html";
-  if (!isValidInput()) return;
+  	if (!isValidInput()) return;
 
-  try {
     $.ajax({
     url: '/users/register',
     type: 'POST',
@@ -17,17 +15,12 @@ function submitRegister() {
     dataType: 'json'
     })
       .done(registerSuccess)
-      .fail(registerError); 
-  } 
-  catch (ex) {
-    window.location = "./homepage.html";
-  }
+      .fail(registerError);
 }
 
 function registerSuccess(data, textStatus, jqXHR) {
-  // window.location = "./homepage.html";  // TODO: Uncomment below
   if (data.success) {  
-    window.location = "./homepage.html";
+    window.location.replace("homepage.html");
   }
   else {
     divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
@@ -36,7 +29,6 @@ function registerSuccess(data, textStatus, jqXHR) {
 }
 
 function registerError(jqXHR, textStatus, errorThrown) {
-  // window.location = "./homepage.html";  // TODO: Uncomment below
   if (jqXHR.statusCode == 404) {
     divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
 	divToChange.show();
@@ -55,14 +47,20 @@ function isValidInput() {
 	let zipcode = $('#zipcode').val();
 	let failHTML = '';
 
+	let emailRe = /^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
 	let zipcodeRe = /^\d{5}$/;
 	let strongPasswordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-	// Above requires password to have at least one lowercase letter, one uppercase, one digit, one special char,
-	//   and at least 8 chars total
 
-	// Could check email structure here as well
-
-	if ((email1 != email2) || (email1 == '')) {  // Checks that both emails are the same
+	if (!emailRe.test(email1)) {
+		$('.inputEmail').addClass('error');
+    	failHTML += ("<p><span class='red-text text-darken-2'>Please enter valid email address.</span></p>");
+		isValid = false;
+	}
+	else {
+		$('.inputEmail').removeClass('error');
+	}
+	
+	if ((email1 != email2) || (email1 == '')) {
     	$('.inputEmail').addClass('error');
     	failHTML += ("<p><span class='red-text text-darken-2'>Emails do not match.</span></p>");
 		isValid = false;
@@ -94,11 +92,21 @@ function isValidInput() {
     	divToChange.show();
 	}
 	
-  return isValid;
+  	return isValid;
 }
 
 $(function () {
-  $('.registerButton').click(submitRegister);
+	if (window.localStorage.getItem('authToken')) {
+		window.location.replace('homepage.html'); // Detects if user is already logged in and redirects them if they are
+	}
+	else {
+		$('.registerButton').click(submitRegister);
+		$('#password').keypress(function(event) {
+			if( event.which === 13 ) {
+				submitRegister();
+			}
+		});
+	}
 });
 
 function openNav() { document.getElementById("menu").style.width = "250px";}

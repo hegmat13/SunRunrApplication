@@ -3,7 +3,8 @@
 <head>
 	<title>SunRunr Login</title>
 	<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css">
-	<script src="./javascripts/login.js"></script>
+	<script src="./javascripts/login.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -29,17 +30,16 @@
 
 		<p class = "registerButtonToCenter">Log in to access XXX YYY ZZZ</p>
 
-		<form id = "registerId" onsubmit="submitRegister();return false;">
+		<form id = "registerId">
 			<div class = "registerPageDiv">
 				<div class = "rightColumn">
 
 					<input class = "inputEmail" type= "text" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName" required value = "" placeholder = "email@SunRunr.com" title = "Please enter a valid email address">
 					<br>
 
-					<input type = "password" class = "inputPassword" type = "text" id = "passWord" required>
+					<input type = "password" class = "inputPassword" type = "text" id = "password" required>
 					
 					<br>
-					<div id="ifFailure"></div>
 				</div>
 				<div class = "leftColumn">
 					Email Address <br><br>
@@ -48,8 +48,9 @@
 			</div>
 			<br><br><br>
 			<div class = "registerButtonToCenter">
-				<button class = "registerButton"  type = "submit" value = "Register" >Login</button>
+				<button class = "registerButton"  type = "button" value = "Register" >Login</button>
 				<br><br>
+				<div id="ifFailure"></div>
 				Need to create an account?<br>
 				<a onclick = "window.location.href='registration.html'" class = "haveAccount">Register Now</a>
 			</div>
