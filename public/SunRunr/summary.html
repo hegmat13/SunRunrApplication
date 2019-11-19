@@ -6,7 +6,8 @@
 
   <title>SunRunr</title>
   <link rel="icon" href="./images/runMan.ico">
-  
+  <script src='./javascripts/summary.js' defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css">
 
 </head>
@@ -49,37 +50,12 @@
       <p class = "bodyText"> XXXX.</p>
     </div>
 
-<h1 class = "mainTitle">Activities Summary View</h1>
+<h1 class = "mainTitle">Activities Summary</h1>
     <div class = "welcomeToOurPage">
       <p class = "subTitleMain">We will put our data in here</p>
-      <p class = "bodyText"> XXXX.</p>
+      <p class = "bodyText" id='dataParagraph'></p>
     </div>
 </div>
 </div>
-<script>
-
-function openNav() { document.getElementById("menu").style.width = "250px";}
-
-function closeNav() {document.getElementById("menu").style.width = "0";}
-
-function logout(){
-    document.getElementById("demo").style.color = "red";
-    window.localStorage.removeItem('authToken');
-    window.location.replace('login.html');
-}
-
-// function logout() {
-
-//   var ajax = new XMLHttpRequest();
-//   ajax.open("GET", "controller.php?action=logout", true);
-//   ajax.send();
-//     ajax.onreadystatechange = function(){
-//       if(ajax.readyState==4 && ajax.status==200){
-//         window.location.replace("homepage.php");
-//       }
-//     }
-// }
-</script>
-
 </body>
 </html>

@@ -5,8 +5,8 @@ var hwDataSchema = new db.Schema({
     apikey:     Number,
     deviceId:   String,
     //userEmail:  String,
-    latitude:   Number,
-    longitude:  Number,
+    lat:   Number,
+    lon:  Number,
     uv:         Number
     //submitTime: { type: Date, default: Date.now }
 });

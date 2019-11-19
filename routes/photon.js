@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-//var Device = require("../models/device");
-//var HwData = require("../models/hwdata");
+var Device = require("../models/device");
+var HwData = require("../models/hwdata");
 
 /* POST: Register new device. */
 router.post('/hit', function(req, res, next) {
@@ -39,7 +39,6 @@ router.post('/hit', function(req, res, next) {
   }
 
   // Find the device and verify the apikey
-  /*
   Device.findOne({ deviceId: req.body.deviceId }, function(err, device) {
     if (device !== null) {
       if (device.apikey != req.body.apikey) {
@@ -50,10 +49,10 @@ router.post('/hit', function(req, res, next) {
       else {
         // Create a new hw data with user email time stamp 
         var newHwData = new HwData({
-          userEmail: device.userEmail,
-          deviceid: req.body.deviceId,
-          longitude: req.body.longitude,
-          latitude: req.body.latitude
+          uv: req.body.uv,
+          deviceId: req.body.deviceId,
+          lon: req.body.lon,
+          lat: req.body.lat
         });
 
         console.log(newHWData); 
@@ -67,7 +66,7 @@ router.post('/hit', function(req, res, next) {
           }
           else {
             responseJson.status = "OK";
-            responseJson.message = "Data saved in db with object ID " + newHwData._id + ".";
+            responseJson.message = "Data saved in db with device ID " + newHwData.deviceId + ".";
             return res.status(201).send(JSON.stringify(responseJson));
           }
         });
@@ -78,7 +77,7 @@ router.post('/hit', function(req, res, next) {
       responseJson.message = "Device ID " + req.body.deviceId + " not registered.";
       return res.status(201).send(JSON.stringify(responseJson));    
     }
-  });*/
+  });
 }); 
 
 module.exports = router;
