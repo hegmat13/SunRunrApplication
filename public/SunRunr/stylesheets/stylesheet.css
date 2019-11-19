@@ -29,7 +29,7 @@ body{
 	.bigDiv{
 		background: url('../images/oceanRun.jpg');
 		height: 800px;
-	}*/
+	}
 
 	.FrontPageImage{
 	display: block;
@@ -40,7 +40,7 @@ body{
 	border-width: 9px;
 	height : 100px;
 }
-}
+} */
 
 .bigDiv2{
 	background: rgba(135,202,197, 0.8);
