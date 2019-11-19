@@ -4,6 +4,7 @@ body{
 	background-color: #A6D7D3;
 	margin-left: 0;
 	margin-right: 0;
+	font-family: "Glouchester MT";
 	}
 
 .bigDiv{
@@ -40,6 +41,7 @@ body{
 	border-width: 9px;
 	height : 100px;
 }
+https://www.w3schools.com/css/tryit.asp?filename=trycss_form_responsive
 } */
 
 .bigDiv2{
@@ -108,7 +110,7 @@ Main Menu*/
     cursor: pointer;
 }
 .mainTitle{
-	font-family: "Copperplate Gothic";
+	font-family: "Penelope Anne";
 	text-align: center;
 	font-size: 50px;
 	text-shadow: 3px;
@@ -180,15 +182,18 @@ Main Menu*/
 	margin-bottom: 8px;
 	margin-top: 8px;
 	width: 170px;
+	border-radius: 4px;
 }
 .inputZip{
 	margin-bottom: 8px;
 	margin-top: 8px;
+	border-radius: 4px;
 }
 .inputPassword{
 	margin-bottom: 8px;
 	margin-top: 8px;
-	width: 170px;	
+	width: 170px;
+	border-radius: 4px;	
 }
 .leftColumn{
 	float: right;
@@ -258,4 +263,11 @@ to {top:0; opacity:1}
 
 .error {
     border: 2px solid red;
+}
+
+.iFieldLarge{
+	margin-bottom: 8px;
+	margin-top: 8px;
+	border-radius: 4px;
+	width: 200px;
 }

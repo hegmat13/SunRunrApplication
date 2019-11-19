@@ -43,8 +43,9 @@
 		<form id = "registerId" onsubmit="submitRegister();return false;">
 			<div class = "registerPageDiv">
 				<div class = "rightColumn">
-
-					<input class = "inputPassword" type = "text" id = "regDevice" title = "Please enter a valid device id" placeholder = "0000000000000" required>
+					<!--One Example for a particle device is 1e0032123447343149111039 -->
+					<!--But what exactly are we putting here? -->
+					<input class = "iFieldLarge" type = "text" id = "regDevice" title = "Please enter a valid device id" placeholder = "1e0032123447343149111039" required>
 					
 					<br>
 					<div id="ifFailure"></div>
