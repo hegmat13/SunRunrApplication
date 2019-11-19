@@ -182,15 +182,18 @@ Main Menu*/
 	margin-bottom: 8px;
 	margin-top: 8px;
 	width: 170px;
+	border-radius: 4px;
 }
 .inputZip{
 	margin-bottom: 8px;
 	margin-top: 8px;
+	border-radius: 4px;
 }
 .inputPassword{
 	margin-bottom: 8px;
 	margin-top: 8px;
-	width: 170px;	
+	width: 170px;
+	border-radius: 4px;	
 }
 .leftColumn{
 	float: right;
@@ -265,5 +268,6 @@ to {top:0; opacity:1}
 .iFieldLarge{
 	margin-bottom: 8px;
 	margin-top: 8px;
+	border-radius: 4px;
 	width: 200px;
 }
