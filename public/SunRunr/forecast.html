@@ -13,20 +13,34 @@
 
 <body onload = "loadImage()">
 
-<!--MENU -->
-  <div class = "menu" id = "menu" style="width: 0px;">
+<!--MENU-->
+<div class = "menu" id = "menu" style="width: 0px;">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-    <a class = "menu1" href = "homepage.html">Home</a><br>
     <a class = "menu1" href = "aboutUs.html">About Us</a><br>
-    <a class = "menu1" href = "summary.html">Summary View</a><br>
-    <a class = "menu1" href = "activitySummary.html">Activities Summary View</a><br>
-    <a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br>
-    <a class = "menu1" href = "registerDevice.html">Register a device</a><br>
-      <a class = "menu1" href = "login.html">Login</a><br>
+    <!--If Logged in-->
+    <a class = "menu1" href = "summary.html">Summary View</a><br> <!--INCLUDES ACTIVITY SUMMARY VIEW-->
+<!--  <a class = "menu1" href = "activitySummary.html">Activities Summary View</a><br> -->
+
+    <a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br><!--INCLUDES MAP-->
+    <!-- <a class = "menu1" href = "viewMap.html">Map</a><br> -->
+
+    <a class = "menu1" href = "forecast.html">Weather Forecast</a><br>
+
+
+    <!-- <a class = "menu1" href = "viewDevices.html">Devices</a><br> -->
+    <a class = "menu1" href = "registerDevice.html">Devices</a><br>
+<!--  <a class = "menu1" href = "login.html">Login</a><br>
+      <a class = "menu1" href = "registration.html">Register</a> -->
+
+      <a id = "demo" class = "menu1" onclick = "logout()">Log Out</a><br>
+      <!--END-->
+      <!--If NOT Logged in-->
+    <a class = "menu1" href = "login.html">Login</a><br>
       <a class = "menu1" href = "registration.html">Register</a>
-  </div> 
+      <!--END-->
+  </div>
 <!--END OF MENU-->
+
 <div class = "bigDiv">
 
 		<h1 class = "mainTitle">Weekly Weather Forecast</h1>
@@ -57,6 +71,7 @@ function logout() {
         window.location.replace("homepage.php");
       }
     }
+   document.getElementById("demo").style.color = "red";
 }
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 

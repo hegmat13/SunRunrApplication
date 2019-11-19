@@ -5,21 +5,34 @@
 </head>
 
 <body>
-<!-- <button onclick="window.location.href='homepage.php'" class = "homeButton" width = 200px>Home</button> -->
-<!--MENU -->
-	<div class = "menu" id = "menu" style="width: 0px;">
+<!--MENU-->
+<div class = "menu" id = "menu" style="width: 0px;">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-		<a class = "menu1" href = "homepage.html">Home</a><br>
 		<a class = "menu1" href = "aboutUs.html">About Us</a><br>
+		<!--If Logged in-->
+		<a class = "menu1" href = "summary.html">Summary View</a><br> <!--INCLUDES ACTIVITY SUMMARY VIEW-->
+<!-- 	<a class = "menu1" href = "activitySummary.html">Activities Summary View</a><br> -->
+
+		<a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br><!--INCLUDES MAP-->
+		<!-- <a class = "menu1" href = "viewMap.html">Map</a><br> -->
+
 		<a class = "menu1" href = "forecast.html">Weather Forecast</a><br>
-		<a class = "menu1" href = "summary.html">Summary View</a><br>
-		<a class = "menu1" href = "activitySummary.html">Activities Summary View</a><br>
-		<a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br>
-		<a class = "menu1" href = "login.html">Log In</a><br>
+
+
+		<!-- <a class = "menu1" href = "viewDevices.html">Devices</a><br> -->
+		<a class = "menu1" href = "registerDevice.html">Devices</a><br>
+<!-- 	<a class = "menu1" href = "login.html">Login</a><br>
+	    <a class = "menu1" href = "registration.html">Register</a> -->
+
+	    <a id = "demo" class = "menu1" onclick = "logout()">Log Out</a><br>
+	    <!--END-->
+	    <!--If NOT Logged in-->
+		<a class = "menu1" href = "login.html">Login</a><br>
 	    <a class = "menu1" href = "registration.html">Register</a>
-	</div> 
+	    <!--END-->
+	</div>
 <!--END OF MENU-->
+
 <div class = "bigDiv">
 		<span class = "spanStyle" onclick="openNav()"><img src = "images/runningManSidebar.svg" class = "menuButtonImage2"></span>
 	<div class = "bigDiv2">
@@ -50,9 +63,12 @@
 	</div>
 </div>
 <script>
-	function openNav() { document.getElementById("menu").style.width = "250px";}
+function openNav() { document.getElementById("menu").style.width = "250px";}
 
-	function closeNav() {document.getElementById("menu").style.width = "0";}
+function closeNav() {document.getElementById("menu").style.width = "0";}
+
+function logout(){document.getElementById("demo").style.color = "red";}
+
 	var divToChange = document.getElementById("ifFailure");
 	function submitRegister() {
 	var deviceID = document.getElementById(".inputPassword").value;
@@ -70,11 +86,9 @@
 	console.log("Sent it")
 
 	}
-	
+	// function openNav() { document.getElementById("menu").style.width = "250px";}
 
-	function openNav() { document.getElementById("menu").style.width = "250px";}
-
-	function closeNav() {document.getElementById("menu").style.width = "0";}
+	// function closeNav() {document.getElementById("menu").style.width = "0";}
 /*
 	function logout() {
 
@@ -87,6 +101,7 @@
 		}
 		}
 	} */ 
+
 </script>
 </body>
 </html>
