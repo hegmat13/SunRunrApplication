@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 //var indexRouter = require('./routes/devices');
 var usersRouter = require('./routes/users');
-//var labRouter = require('./routes/photon');
+var photonRouter = require('./routes/photon');
 
 var app = express();
 
@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/devices', deviceRouter);
 app.use('/users', usersRouter);
-//app.use('/photon',photonRouter);
+app.use('/photon', photonRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

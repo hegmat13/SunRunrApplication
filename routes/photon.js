@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var Device = require("../models/device");
-var HwData = require("../models/hwdata");
+//var Device = require("../models/device");
+//var HwData = require("../models/hwdata");
 
 /* POST: Register new device. */
 router.post('/hit', function(req, res, next) {
+  console.log("Post Recieved from WebHook"); 
+  
+  console.log(req.body); 
   var responseJson = { 
     status : "",
     message : ""
@@ -23,19 +26,20 @@ router.post('/hit', function(req, res, next) {
     return res.status(201).send(JSON.stringify(responseJson));
   }
   
-  if( !req.body.hasOwnProperty("longitude") ) {
+  if( !req.body.hasOwnProperty("lon") ) {
     responseJson.status = "ERROR";
     responseJson.message = "Request missing longitude parameter.";
     return res.status(201).send(JSON.stringify(responseJson));
   }
   
-  if( !req.body.hasOwnProperty("latitude") ) {
+  if( !req.body.hasOwnProperty("lat") ) {
     responseJson.status = "ERROR";
     responseJson.message = "Request missing latitude parameter.";
     return res.status(201).send(JSON.stringify(responseJson));
   }
 
   // Find the device and verify the apikey
+  /*
   Device.findOne({ deviceId: req.body.deviceId }, function(err, device) {
     if (device !== null) {
       if (device.apikey != req.body.apikey) {
@@ -51,6 +55,8 @@ router.post('/hit', function(req, res, next) {
           longitude: req.body.longitude,
           latitude: req.body.latitude
         });
+
+        console.log(newHWData); 
 
         // Save device. If successful, return success. If not, return error message.                          
         newHwData.save(function(err, newHwData) {
@@ -72,7 +78,7 @@ router.post('/hit', function(req, res, next) {
       responseJson.message = "Device ID " + req.body.deviceId + " not registered.";
       return res.status(201).send(JSON.stringify(responseJson));    
     }
-  });
-});
+  });*/
+}); 
 
 module.exports = router;
