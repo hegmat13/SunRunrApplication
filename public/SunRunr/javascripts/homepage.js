@@ -22,17 +22,6 @@ function openNav() { document.getElementById("menu").style.width = "250px";}
 
 function closeNav() {document.getElementById("menu").style.width = "0";}
 
-// function logout() {
-
-//   var ajax = new XMLHttpRequest();
-//   ajax.open("GET", "controller.php?action=logout", true);
-//   ajax.send();
-//     ajax.onreadystatechange = function(){
-//       if(ajax.readyState==4 && ajax.status==200){
-//         window.location.replace("homepage.html");
-//       }
-//     }
-// }
 function logout(){
     document.getElementById("demo").style.color = "red";
     window.localStorage.removeItem('authToken');
