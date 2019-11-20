@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let Device = require("../models/device");
+let HwData = require("../models/hwdata");
 let fs = require('fs');
 let jwt = require("jwt-simple");
 
@@ -120,8 +121,8 @@ router.post('/register', function(req, res, next) {
   });
 });
 
-router.get('/data/:devid', function(req, res, next) {
-  let deviceId = req.params.devid;
+router.post('/data', function(req, res, next) {
+  let deviceId = req.body.deviceId;
   let responseJson = { data: [] };
 
   if (deviceId == "all") {
