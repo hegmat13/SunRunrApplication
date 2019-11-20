@@ -11,12 +11,12 @@ function logout() {
 }
 
 function loadDeviceData() {
-  devID = $('#devID').val()
+  regDevice = $('#regDevice').val()
 
   if (!isValidID()) return;
   
   $.ajax({
-    url: '/devices/data/' + devID,
+    url: '/devices/data/' + regDevice,
     type: 'GET',
     contentType: 'application/json',
     dataType: 'json'
@@ -63,7 +63,7 @@ function loadError(jqXHR, textStatus, errorThrown) { // TODO: Needs to change
 
 function isValidID() {
   let isValid = true;
-  let deviceId = $('#devID').val();
+  let deviceId = $('#regDevice').val();
   let failHTML = '';
 
   let deviceIdRe = /^[0-9a-f]{24}$/;

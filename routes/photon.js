@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-//var Device = require("../models/device");
-//var HwData = require("../models/hwdata");
+var Device = require("../models/device");
+var HwData = require("../models/hwdata");
 
 /* POST: Register new device. */
 router.post('/hit', function(req, res, next) {
@@ -56,28 +56,30 @@ router.post('/hit', function(req, res, next) {
     return res.status(201).send(JSON.stringify(responseJson));
   }
 
-
-
-
   // Find the device and verify the apikey
-  /*
+  
   Device.findOne({ deviceId: req.body.deviceId }, function(err, device) {
+    if(err) {return res.status(400).json({message:err.message}); }
     if (device !== null) {
+      /*
       if (device.apikey != req.body.apikey) {
         responseJson.status = "ERROR";
         responseJson.message = "Invalid apikey for device ID " + req.body.deviceId + ".";
         return res.status(201).send(JSON.stringify(responseJson));
-      }
-      else {
+      } */
+    //  else {
         // Create a new hw data with user email time stamp 
         var newHwData = new HwData({
-          userEmail: device.userEmail,
-          deviceid: req.body.deviceId,
-          longitude: req.body.longitude,
-          latitude: req.body.latitude
+          apikey:   req.body.apikey,
+          deviceId: req.body.deviceId,
+          GPS_speed: req.body.GPS_speed, 
+          lon: req.body.lon,
+          lat: req.body.lat,
+          uv : req.body.uv,
+          publishTime: req.body.Date
         });
 
-        console.log(newHWData); 
+        console.log(newHwData); 
 
         // Save device. If successful, return success. If not, return error message.                          
         newHwData.save(function(err, newHwData) {
@@ -92,14 +94,14 @@ router.post('/hit', function(req, res, next) {
             return res.status(201).send(JSON.stringify(responseJson));
           }
         });
-      }
+     // }
     } 
     else {
       responseJson.status = "ERROR";
       responseJson.message = "Device ID " + req.body.deviceId + " not registered.";
       return res.status(201).send(JSON.stringify(responseJson));    
     }
-  });*/
+  });
 }); 
 
 module.exports = router;
