@@ -83,6 +83,7 @@ router.post('/hit', function(req, res, next) {
 
         // Save device. If successful, return success. If not, return error message.                          
         newHwData.save(function(err, newHwData) {
+          console.log("runs"); 
           if (err) {
             responseJson.status = "ERROR";
             responseJson.message = "Error saving data in db.";
@@ -93,6 +94,7 @@ router.post('/hit', function(req, res, next) {
             responseJson.message = "Data saved in db with object ID " + newHwData._id + ".";
             return res.status(201).send(JSON.stringify(responseJson));
           }
+          
         });
      // }
     } 

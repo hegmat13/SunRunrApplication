@@ -33,7 +33,7 @@ function loadSuccess(data, textStatus, jqXHR) { // TODO: Needs to change
 
     $('.formToRemove').addClass('hide');
 
-    for (let obj of data) {
+    for (let obj of data.data) {
       let GPS_speed = obj.GPS_speed;
       let lat = obj.lat;
       let lon = obj.lon;
@@ -46,7 +46,7 @@ function loadSuccess(data, textStatus, jqXHR) { // TODO: Needs to change
     parToEdit.html(addHTML);    
   }
   else {
-    divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
+    divToChange.html("<span class='red-text text-darken-2'>Error1: " + data.message + "</span>");
     divToChange.show();
   }
 }
@@ -57,7 +57,7 @@ function loadError(jqXHR, textStatus, errorThrown) { // TODO: Needs to change
     divToChange.show();
   }
   else {
-    divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.responseJSON.message + "</span>");
+    divToChange.html("<span class='red-text text-darken-2'>Error2: " + jqXHR.responseJSON.message + "</span>");
     divToChange.show();
   }
 }

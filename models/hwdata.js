@@ -2,13 +2,13 @@ var db = require("../db");
 
 // Define the schema
 var hwDataSchema = new db.Schema({
-    apikey:     Number,
+    apikey:     String,
     deviceId:   String,
     GPS_speed:  String,
-    lat:        Number,
-    lon:        Number,
-    uv:         Number,
-    publishTime: { type: Date, default: Date.now }
+    lat:        String,
+    lon:        String,
+    uv:         String,
+    publishTime: String
 });
 
 // Creates a Devices (plural) collection in the db using the device schema

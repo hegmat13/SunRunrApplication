@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
-let Device = require("../models/device");
-let HwData = require("../models/hwdata");
+var Device = require("../models/device");
+var HwData = require("../models/hwdata");
 let fs = require('fs');
 let jwt = require("jwt-simple");
 
@@ -122,19 +122,10 @@ router.post('/register', function(req, res, next) {
 });
 
 router.post('/data', function(req, res, next) {
-  let deviceId = req.body.deviceId;
-  let responseJson = { data: [] };
-
-  if (deviceId == "all") {
-    let query = {};
-  }
-  else {
-    let query = {
-      "deviceId" : deviceId
-    };
-  }
+  let deviceId1 = req.body.deviceId;
+  let responseJson = { success: false, data: [] };
   
-  HwData.find(query, function(err, allData) {
+  HwData.find({ deviceId : deviceId1 }, function(err, allData) {
     if (err) {
       let errorMsg = {"message" : err};
       return res.status(400).json(errorMsg);
@@ -142,6 +133,7 @@ router.post('/data', function(req, res, next) {
     else {
       for(let doc of allData) {
         responseJson.data.push({ "deviceId" : doc.deviceId, "GPS_speed" : doc.GPS_speed, "lat" : doc.lat, "lon" : doc.lon, "uv" : doc.uv, "publishTime" : doc.publishTime});
+        responseJson.success = true;
       }
       return res.status(200).json(responseJson);
     }
