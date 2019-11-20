@@ -40,7 +40,7 @@ function registerError(jqXHR, textStatus, errorThrown) {
   
 function isValidInput() {
   let isValid = true;
-  let deviceId = $('#registerId').val();
+  let deviceId = $('#regDevice').val();
   let failHTML = '';
 
   let deviceIdRe = /^[0-9a-f]{24}$/;
