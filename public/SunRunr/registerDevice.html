@@ -74,44 +74,6 @@ function logout(){
     window.localStorage.removeItem('authToken');
     window.location.replace('login.html');
 }
-
-	var divToChange = document.getElementById("ifFailure");
-
-	function submitRegister() {
-		var deviceID = document.getElementById(".inputPassword").value;
-
-	    document.getElementById("demo").style.color = "red";
-	    window.localStorage.removeItem('authToken');
-	    window.location.replace('login.html');
-
-	    $.ajax({
-	    url: '/devices/registerDevice',
-	    type: 'POST',
-	    contentType: 'application/json',
-	    data: JSON.stringify({device:deviceID}),
-	    dataType: 'json'
-	    })
-	      .done(registerSuccess)
-	      .fail(registerError); 
-
-		console.log("Sent it")
-	}
-	// function openNav() { document.getElementById("menu").style.width = "250px";}
-
-	// function closeNav() {document.getElementById("menu").style.width = "0";}
-/*
-	function logout() {
-
-	var ajax = new XMLHttpRequest();
-	ajax.open("GET", "controller.php?action=logout", true);
-	ajax.send();  // Logging out might need local storage of the login info to be cleared, not sure though
-		ajax.onreadystatechange = function(){
-		if(ajax.readyState==4 && ajax.status==200){
-			window.location.replace("homepage.php");
-		}
-		}
-	} */ 
-
 </script>
 </body>
 </html>
