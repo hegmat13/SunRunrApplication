@@ -1,9 +1,12 @@
 var divToChange = $("#ifFailure");
 
-function submitRegister() {
-	let deviceId = $('#registerId').val();
-    let username = window.localStorage.getItem('username');   //Get user email address from localStorage  
+$(".registerButton").click(submitRegister); 
 
+function submitRegister() {
+	let deviceId = $('#regDevice').val();
+    let username = window.localStorage.getItem('username');   //Get user email address from localStorage  
+    console.log(username); 
+    console.log(deviceId); 
   	if (!isValidInput()) return;
 
     $.ajax({
@@ -14,7 +17,7 @@ function submitRegister() {
     dataType: 'json'
     })
       .done(registerSuccess)
-      .fail(registerError);
+      .fail(registerError); 
 }
 
 function registerSuccess(data, textStatus, jqXHR) {
@@ -33,7 +36,7 @@ function registerError(jqXHR, textStatus, errorThrown) {
 	divToChange.show();
   }
   else {
-    divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.responseJSON.message + "</span>");
+    divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.status + " " + jqXHR.responseText + "</span>");
     divToChange.show();
   }
 }
@@ -71,6 +74,7 @@ function isValidInput() {
   	return isValid;
 }
 
+/*
 $(function () {
 	if (window.localStorage.getItem('authToken')) {
 		window.location.replace('homepage.html'); // Detects if user is already logged in and redirects them if they are
@@ -83,7 +87,7 @@ $(function () {
 			}
 		});
 	}
-});
+}); */
 
 function openNav() { document.getElementById("menu").style.width = "250px";}
 

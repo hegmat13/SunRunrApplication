@@ -20,7 +20,7 @@ function submitLogin() {
 function loginSuccess(data, textStatus, jqXHR) {
   if (data.success) {
     window.localStorage.setItem('authToken', data.authToken);
-    window.localStorage.setItem('username', data.username); 
+    window.localStorage.setItem('username', $('#userName').val()); 
     window.location.replace("homepage.html");
   }
   else {

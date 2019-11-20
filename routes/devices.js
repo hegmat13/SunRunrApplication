@@ -5,10 +5,9 @@ let fs = require('fs');
 let jwt = require("jwt-simple");
 
 /* Authenticate user */
-let secret = "secret"; //fs.readFileSync(__dirname + '/../../jwtkey').toString();
+var secret = "secret"; // fs.readFileSync(__dirname + '/../../jwtkey').toString();
 
 // Function to generate a random apikey consisting of 32 characters
-/*
 function getNewApikey() {
   let newApikey = "";
   let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -18,7 +17,7 @@ function getNewApikey() {
   }
 
   return newApikey;
-}*/
+}
 
 // GET request return one or "all" devices registered and last time of contact.
 router.get('/status/:devid', function(req, res, next) {
@@ -50,10 +49,11 @@ router.get('/status/:devid', function(req, res, next) {
 
 router.post('/register', function(req, res, next) {
   let responseJson = {
-    deviceId : req.body.deviceId,
-    username: req.body.username
+    registered: false,
+    message : "",
+    apikey : "none",
+    deviceId : "none"
   };
-
   let deviceExists = false;
   
   // Ensure the request includes the deviceId parameter
@@ -62,27 +62,27 @@ router.post('/register', function(req, res, next) {
     return res.status(400).json(responseJson);
   }
 
-  let username = "";
+  let email = "";
     
-  // If authToken provided, use username in authToken 
-  /*if (req.headers["x-auth"]) {
+  // If authToken provided, use email in authToken 
+  if (req.headers["x-auth"]) {
     try {
       let decodedToken = jwt.decode(req.headers["x-auth"], secret);
-      username = decodedToken.username;
+      email = decodedToken.email;
     }
     catch (ex) {
       responseJson.message = "Invalid authorization token.";
       return res.status(400).json(responseJson);
     }
   }
-  else { */
-    // Ensure the request includes the username parameter
+  else {
+    // Ensure the request includes the email parameter
     if( !req.body.hasOwnProperty("username")) {
-      responseJson.message = "username was not found within localStorage.";
+      responseJson.message = "Invalid authorization token or missing email address.";
       return res.status(400).json(responseJson);
     }
     username = req.body.username;
-  // }
+  }
     
   // See if device is already registered
   Device.findOne({ deviceId: req.body.deviceId }, function(err, device) {
@@ -92,13 +92,13 @@ router.post('/register', function(req, res, next) {
     }
     else {
       // Get a new apikey
-	   //deviceApikey = getNewApikey();
+	   deviceApikey = getNewApikey();
 	    
-	    // Create a new device with specified id, user username, and randomly generated apikey.
+	    // Create a new device with specified id, user email, and randomly generated apikey.
       let newDevice = new Device({
         deviceId: req.body.deviceId,
-        username: username
-      //  apikey: deviceApikey
+        username: username,
+        apikey: deviceApikey
       });
 
       // Save device. If successful, return success. If not, return error message.
@@ -133,7 +133,7 @@ router.post('/ping', function(req, res, next) {
         return res.status(400).json(responseJson);
     }
     
-    // If authToken provided, use username in authToken 
+    // If authToken provided, use email in authToken 
     try {
         let decodedToken = jwt.decode(req.headers["x-auth"], secret);
     }
