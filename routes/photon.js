@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Device = require("../models/device");
-var HwData = require("../models/hwdata");
+//var Device = require("../models/device");
+//var HwData = require("../models/hwdata");
 
 /* POST: Register new device. */
 router.post('/hit', function(req, res, next) {
@@ -28,17 +28,39 @@ router.post('/hit', function(req, res, next) {
   
   if( !req.body.hasOwnProperty("lon") ) {
     responseJson.status = "ERROR";
-    responseJson.message = "Request missing longitude parameter.";
+    responseJson.message = "Request missing lon parameter.";
     return res.status(201).send(JSON.stringify(responseJson));
   }
   
   if( !req.body.hasOwnProperty("lat") ) {
     responseJson.status = "ERROR";
-    responseJson.message = "Request missing latitude parameter.";
+    responseJson.message = "Request missing lat parameter.";
     return res.status(201).send(JSON.stringify(responseJson));
   }
 
+  if( !req.body.hasOwnProperty("GPS_speed") ) {
+    responseJson.status = "ERROR";
+    responseJson.message = "Request missing GPS_speed parameter.";
+    return res.status(201).send(JSON.stringify(responseJson));
+  }
+
+  if( !req.body.hasOwnProperty("uv") ) {
+    responseJson.status = "ERROR";
+    responseJson.message = "Request missing uv parameter.";
+    return res.status(201).send(JSON.stringify(responseJson));
+  }
+
+  if( !req.body.hasOwnProperty("Date") ) {
+    responseJson.status = "ERROR";
+    responseJson.message = "Request missing Date parameter.";
+    return res.status(201).send(JSON.stringify(responseJson));
+  }
+
+
+
+
   // Find the device and verify the apikey
+  /*
   Device.findOne({ deviceId: req.body.deviceId }, function(err, device) {
     if (device !== null) {
       if (device.apikey != req.body.apikey) {
@@ -49,10 +71,10 @@ router.post('/hit', function(req, res, next) {
       else {
         // Create a new hw data with user email time stamp 
         var newHwData = new HwData({
-          uv: req.body.uv,
-          deviceId: req.body.deviceId,
-          lon: req.body.lon,
-          lat: req.body.lat
+          userEmail: device.userEmail,
+          deviceid: req.body.deviceId,
+          longitude: req.body.longitude,
+          latitude: req.body.latitude
         });
 
         console.log(newHWData); 
@@ -66,7 +88,7 @@ router.post('/hit', function(req, res, next) {
           }
           else {
             responseJson.status = "OK";
-            responseJson.message = "Data saved in db with device ID " + newHwData.deviceId + ".";
+            responseJson.message = "Data saved in db with object ID " + newHwData._id + ".";
             return res.status(201).send(JSON.stringify(responseJson));
           }
         });
@@ -77,7 +99,7 @@ router.post('/hit', function(req, res, next) {
       responseJson.message = "Device ID " + req.body.deviceId + " not registered.";
       return res.status(201).send(JSON.stringify(responseJson));    
     }
-  });
+  });*/
 }); 
 
 module.exports = router;

@@ -8,6 +8,7 @@ let jwt = require("jwt-simple");
 let secret = "secret"; //fs.readFileSync(__dirname + '/../../jwtkey').toString();
 
 // Function to generate a random apikey consisting of 32 characters
+/*
 function getNewApikey() {
   let newApikey = "";
   let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -17,7 +18,7 @@ function getNewApikey() {
   }
 
   return newApikey;
-}
+}*/
 
 // GET request return one or "all" devices registered and last time of contact.
 router.get('/status/:devid', function(req, res, next) {
@@ -49,11 +50,10 @@ router.get('/status/:devid', function(req, res, next) {
 
 router.post('/register', function(req, res, next) {
   let responseJson = {
-    registered: false,
-    message : "",
-    apikey : "none",
-    deviceId : "none"
+    deviceId : req.body.deviceId,
+    username: req.body.username
   };
+
   let deviceExists = false;
   
   // Ensure the request includes the deviceId parameter
@@ -65,7 +65,7 @@ router.post('/register', function(req, res, next) {
   let username = "";
     
   // If authToken provided, use username in authToken 
-  if (req.headers["x-auth"]) {
+  /*if (req.headers["x-auth"]) {
     try {
       let decodedToken = jwt.decode(req.headers["x-auth"], secret);
       username = decodedToken.username;
@@ -75,14 +75,14 @@ router.post('/register', function(req, res, next) {
       return res.status(400).json(responseJson);
     }
   }
-  else {
+  else { */
     // Ensure the request includes the username parameter
     if( !req.body.hasOwnProperty("username")) {
-      responseJson.message = "Invalid authorization token or missing username address.";
+      responseJson.message = "username was not found within localStorage.";
       return res.status(400).json(responseJson);
     }
     username = req.body.username;
-  }
+  // }
     
   // See if device is already registered
   Device.findOne({ deviceId: req.body.deviceId }, function(err, device) {
@@ -92,13 +92,13 @@ router.post('/register', function(req, res, next) {
     }
     else {
       // Get a new apikey
-	   deviceApikey = getNewApikey();
+	   //deviceApikey = getNewApikey();
 	    
 	    // Create a new device with specified id, user username, and randomly generated apikey.
       let newDevice = new Device({
         deviceId: req.body.deviceId,
-        username: username,
-        apikey: deviceApikey
+        username: username
+      //  apikey: deviceApikey
       });
 
       // Save device. If successful, return success. If not, return error message.

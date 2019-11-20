@@ -1,10 +1,8 @@
 var db = require("../db");
 
 var deviceSchema = new db.Schema({
-    apikey:       String,
     deviceId:     String,
-    username:     String,
-    lastContact:  { type: Date, default: Date.now }
+    username:     String
 });
 
 var Device = db.model("Device", deviceSchema);
