@@ -11,14 +11,15 @@ function logout() {
 }
 
 function loadDeviceData() {
-  regDevice = $('#regDevice').val()
+  let devID = $('#regDevice').val()
 
   if (!isValidID()) return;
   
   $.ajax({
-    url: '/devices/data/' + regDevice,
-    type: 'GET',
+    url: '/devices/data',
+    type: 'POST',
     contentType: 'application/json',
+    data: JSON.stringify({deviceId : devID}),
     dataType: 'json'
   })
     .done(loadSuccess)
