@@ -44,8 +44,10 @@
 			<div class = "registerPageDiv">
 				<div class = "rightColumn">
 					<!--One Example for a particle device is 1e0032123447343149111039 -->
-					<!--But what exactly are we putting here? -->
-					<input class = "iFieldLarge" type = "text" id = "regDevice" title = "Please enter a valid device id" placeholder = "1e0032123447343149111039" required>
+					<!--But what exactly are we putting here? 
+						/[0-9]\w[0-9]{22}/ 
+					-->
+					<input class = "inputPassword" type = "text" id = "regDevice" title = "Please enter a valid device id" placeholder = "1e0032123447343149111039" required>
 					
 					<br>
 					<div id="ifFailure"></div>
@@ -68,32 +70,24 @@ function openNav() { document.getElementById("menu").style.width = "250px";}
 
 function closeNav() {document.getElementById("menu").style.width = "0";}
 
-function logout(){
-    document.getElementById("demo").style.color = "red";
-    window.localStorage.removeItem('authToken');
-    window.location.replace('login.html');
-}
+function logout(){document.getElementById("demo").style.color = "red";}
 
 	var divToChange = document.getElementById("ifFailure");
-
 	function submitRegister() {
-		var deviceID = document.getElementById(".inputPassword").value;
+	var deviceID = document.getElementById(".inputPassword").value;
 
-	    document.getElementById("demo").style.color = "red";
-	    window.localStorage.removeItem('authToken');
-	    window.location.replace('login.html');
+    $.ajax({
+    url: '/devices/registerDevice',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({device:deviceID}),
+    dataType: 'json'
+    })
+      .done(registerSuccess)
+      .fail(registerError); 
 
-	    $.ajax({
-	    url: '/devices/registerDevice',
-	    type: 'POST',
-	    contentType: 'application/json',
-	    data: JSON.stringify({device:deviceID}),
-	    dataType: 'json'
-	    })
-	      .done(registerSuccess)
-	      .fail(registerError); 
+	console.log("Sent it")
 
-		console.log("Sent it")
 	}
 	// function openNav() { document.getElementById("menu").style.width = "250px";}
 
