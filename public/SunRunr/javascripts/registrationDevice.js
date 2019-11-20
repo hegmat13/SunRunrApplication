@@ -54,7 +54,7 @@ function isValidInput() {
 		$('#regDevice').removeClass('error');
 	}
 	
-	if (deviceId.length() != 24) {
+	if (deviceId.length != 24) {
     	$('#regDevice').addClass('error');
     	failHTML += ("<p><span class='red-text text-darken-2'>Device ID must be exactly 24 characters.</span></p>");
 		isValid = false;
