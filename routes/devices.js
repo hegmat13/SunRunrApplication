@@ -120,6 +120,33 @@ router.post('/register', function(req, res, next) {
   });
 });
 
+router.get('/data/:devid', function(req, res, next) {
+  let deviceId = req.params.devid;
+  let responseJson = { data: [] };
+
+  if (deviceId == "all") {
+    let query = {};
+  }
+  else {
+    let query = {
+      "deviceId" : deviceId
+    };
+  }
+  
+  HwData.find(query, function(err, allData) {
+    if (err) {
+      let errorMsg = {"message" : err};
+      return res.status(400).json(errorMsg);
+    }
+    else {
+      for(let doc of allData) {
+        responseJson.data.push({ "deviceId" : doc.deviceId, "GPS_speed" : doc.GPS_speed, "lat" : doc.lat, "lon" : doc.lon, "uv" : doc.uv, "publishTime" : doc.publishTime});
+      }
+      return res.status(200).json(responseJson);
+    }
+  });
+});
+
 router.post('/ping', function(req, res, next) {
     let responseJson = {
         success: false,

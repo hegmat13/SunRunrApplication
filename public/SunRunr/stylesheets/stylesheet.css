@@ -271,3 +271,7 @@ to {top:0; opacity:1}
 	border-radius: 4px;
 	width: 200px;
 }
+
+.hide {
+	display: none;
+}

@@ -51,8 +51,29 @@
 
 <h1 class = "mainTitle">Activities Summary</h1>
     <div class = "welcomeToOurPage">
-      <p class = "subTitleMain">We will put our data in here</p>
-      <p class = "bodyText" id='dataParagraph'></p>
+      <p class = "subTitleMain">Please enter Device ID below.</p>
+      <form id = "registerId" class='formToRemove'>
+        <div class = "registerPageDiv">
+          <div class = "rightColumn">
+            <!--One Example for a particle device is 1e0032123447343149111039 -->
+            <!--But what exactly are we putting here? -->
+            <input class = "iFieldLarge" type = "text" id = "regDevice" title = "Please enter a valid device id" placeholder = "1e0032123447343149111039" required>
+            
+            <br>
+          </div>
+          <div class = "leftColumn">
+            Enter Device ID <br><br>
+          </div>
+        </div>
+        <br><br><br>
+        <div class = "registerButtonToCenter">
+          <button id = "button" class = "registerButton"  type = "button" value = "Register" >Get Device Data</button>
+          <br><br>
+          <div id="ifFailure"></div>
+          <button onclick = "window.location.href='viewDevices.html'" class = "registerButton"  type = "submit" value = "Register" >View Devices</button>
+        </div>
+      </form>
+      <p class = "bodyText" id='dataArea'></p>
     </div>
 </div>
 </div>
