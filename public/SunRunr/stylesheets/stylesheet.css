@@ -6,7 +6,20 @@ body{
 	margin-right: 0;
 	font-family: "Glouchester MT";
 	}
+/*600px for smartphones [From lecture 11/18]*/
+@media screen and (max-width:600px){
 
+	body{
+		background-color: #0B6623;
+	}
+}
+@media screen and (min-width: 601px) (max-width:1500px){
+
+	body{
+		background-color: lightblue;
+	}
+}
+}
 .bigDiv{
 	/*background-image: url("../images/oceanRun.jpg");*/
 	background: url('../images/oceanRun.jpg') no-repeat;
