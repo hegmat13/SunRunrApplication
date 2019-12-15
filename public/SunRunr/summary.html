@@ -1,84 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--set up for top of page-->
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-  <title>SunRunr</title>
-  <link rel="icon" href="./images/runMan.ico">
-  <script src='./javascripts/summary.js' defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css">
+  <title>Parallax Template - Materialize</title>
 
-<!--   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- -->
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-
 <body>
-<!--MENU-->
-<div class = "menu" id = "menu" style="width: 0px;">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a class = "menu1" href = "homepage.html">Home</a><br>
-    <a class = "menu1" href = "aboutUs.html">About Us</a><br>
-    <!--If Logged in-->
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo"><img height = "60" src = "./images/runningManSidebar.svg"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="activityDetail.html">Activity Detail View</a></li>
+        <li><a href="forecast.html">Forecast</a></li>
+        <li><a href="registerDevice.html">Devices</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="registration.html">Register</a></li>
+      </ul>
 
-    <a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br><!--INCLUDES MAP-->
-    <!-- <a class = "menu1" href = "viewMap.html">Map</a><br> -->
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="activityDetail.html">Activity Detail View</a></li>
+        <li><a href="forecast.html">Forecast</a></li>
+        <li><a href="registerDevice.html">Devices</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="registration.html">Register</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
 
-    <a class = "menu1" href = "forecast.html">Weather Forecast</a><br>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Summary</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Your Activity Overview</h5>
+        </div>
+        <div class="row center">
+          <!-- <a href="login.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Login</a> -->
+           <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+        </div>
+        <br><br>
 
-
-    <!-- <a class = "menu1" href = "viewDevices.html">Devices</a><br> -->
-    <a class = "menu1" href = "registerDevice.html">Devices</a><br>
-<!--  <a class = "menu1" href = "login.html">Login</a><br>
-      <a class = "menu1" href = "registration.html">Register</a> -->
-
-      <a id = "demo" class = "menu1" onclick = "logout()">Log Out</a><br>
-      <!--END-->
-      <!--If NOT Logged in-->
-<!--  <a class = "menu1" href = "login.html">Login</a><br>
-      <a class = "menu1" href = "registration.html">Register</a> -->
-      <!--END-->
+      </div>
+    </div>
+    <div class="parallax"><img src="./images/forestHikeA.jpg" alt="Unsplashed background img 1"></div>
   </div>
-<!--END OF MENU-->
-<div class = "bigDiv">
 
-<h1 class = "mainTitle">Summary</h1>
-      <span class = "spanStyle" onclick="openNav()"><img src = "images/runningManSidebar.svg" class = "menuButtonImage"></span>
-       <br><br><br><br><br>
-    <div class = "welcomeToOurPage">
-      <p class = "subTitleMain">We will put our data in here</p>
-      <p class = "bodyText"> XXXX.</p>
-    </div>
 
-<h1 class = "mainTitle">Activities Summary</h1>
-    <div class = "welcomeToOurPage">
-      <p class = "subTitleMain">Please enter Device ID below.</p>
-      <form id = "registerId" class='formToRemove'>
-        <div class = "registerPageDiv">
-          <div class = "rightColumn">
-            <!--One Example for a particle device is 1e0032123447343149111039 -->
-            <!--But what exactly are we putting here? -->
-            <input class = "iFieldLarge" type = "text" id = "regDevice" title = "Please enter a valid device id" placeholder = "1e0032123447343149111039" required>
-            
-            <br>
-          </div>
-          <div class = "leftColumn">
-            Enter Device ID <br><br>
-          </div>
-        </div>
-        <br><br><br>
-        <div class = "registerButtonToCenter">
-          <button id = "button" class = "registerButton"  type = "button" value = "Register" >Get Device Data</button>
-          <br><br>
-          <div id="ifFailure"></div>
-          <button onclick = "window.location.href='viewDevices.html'" class = "registerButton"  type = "submit" value = "Register" >View Devices</button>
-        </div>
-      </form>
-      <p class = "bodyText" id='dataArea'></p>
+  <div class="container">
+    <div class="section">
+
     </div>
-</div>
-</div>
-</body>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+     <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Activity Summary</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Your Personalized Activity Details</h5>
+        </div>
+        <div class="row center">
+            <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="./images/oceanRunA.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+    </div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About</h5>
+          <p class="grey-text text-lighten-4">Welcome to SunRunr<br>IoT Fall 2019<br>ECE 413<br>Prof. Roman Lysecky</p>
+
+
+        </div>
+<!--         <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+
+          </ul>
+        </div> -->
+        <div class="col l3 s12">
+          <h5 class="white-text">Students</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Philippe Cutillas<br>Matthew Heger<br>Nicole Muchow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
 </html>
