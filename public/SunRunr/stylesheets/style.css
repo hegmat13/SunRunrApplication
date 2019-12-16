@@ -5,7 +5,21 @@
  *
  * Made By MaterializeCSS.com
  */
+/*Nicole's*/
+.inputEmail{
+  color: white;
+  font-weight: bolder;
+}
+.inputZip{
+  color: white;
+  font-weight: bolder;
+}
+.inputPassword{
+  color: white;
+  font-weight: bolder;
+}
 
+/*END*/
 nav ul a,
 nav .brand-logo {
   color: #444;
