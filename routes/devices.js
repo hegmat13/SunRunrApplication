@@ -53,17 +53,34 @@ router.post('/delete', function(req, res, next) {
     deleted: false,
     message : ""
   };
+  console.log("Inside Delete"); 
 
   if( !req.body.hasOwnProperty("deviceId")) {
     responseJson.message = "Missing deviceId.";
     return res.status(400).json(responseJson);
   }
+/*
+  Device.deleteOne(deleteQuery, funciton(err) {
+ 
+  }); 
+  var deleteQuery = { deviceId: req.body.deviceId }; 
+*/
 
   try {
-    Device.remove({ deviceId: req.body.deviceId });
-    responseJson.deleted = true; 
-    responseJson.message = 'Device with ID ' + req.body.deviceId + ' successfully deleted.';
-    return res.status(200).json(responseJson);
+    Device.findOneAndDelete({deviceId: req.body.deviceId}, function(err, dev) {
+    console.log(dev); 
+      if(dev == null) {
+      responseJson.deleted = false; 
+      responseJson.message = 'Device with ID ' + req.body.deviceId + ' is not currently registered to this user.';
+      return res.status(404).json(responseJson); 
+    }
+      else {
+        console.log("Deleteion was successful"); 
+        responseJson.deleted = true; 
+        responseJson.message = 'Device with ID ' + req.body.deviceId + ' successfully deleted.';
+        return res.status(200).json(responseJson);
+      }
+    }); 
   }
   catch (e) {
     responseJson.message = e;

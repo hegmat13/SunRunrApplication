@@ -105,6 +105,7 @@ router.get("/account" , function(req, res) {
       });
    }
    catch (ex) {
+      console.log(ex); 
       return res.status(401).json({success: false, message: "Invalid authentication token."});
    }
 });

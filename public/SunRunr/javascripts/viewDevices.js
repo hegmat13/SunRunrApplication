@@ -1,8 +1,7 @@
 
 
-
-var divToChange = $(".deleteDiv"); 
 var deleteID = $("#deleteID").val(); 
+var divToChange = $(".deleteDivError"); 
 $("#deleteButton").click(deleteDevice); 
 
 getDevices(); 
@@ -42,8 +41,7 @@ function getDevices() {
   }
 
   function getDeviceSuccess(data, textStatus, jqXHR) {
-   // window.location.href = "http://ec2-18-221-169-9.us-east-2.compute.amazonaws.com:3000/SunRunr/viewDevices.html";
-    var listHtml = ""; 
+    var listHtml = "<h3>All devices currently registered to " + window.localStorage.getItem('username') + ":</h3>"; 
     console.log(data); 
     console.log(data.devices); 
     console.log(data.devices.length); 
@@ -53,7 +51,7 @@ function getDevices() {
         let apikey = obj.apikey; 
         console.log(deviceId); 
         console.log(apikey); 
-        listHtml = "<li> Device ID: " + deviceId + " API key: " + apikey; 
+        listHtml += "<li id=" + deviceId + " class = currDevices li> Device ID: " + deviceId + "<br></br> API key: " + apikey; 
       }
 
      $(".devicesList").html(listHtml); 
@@ -65,6 +63,7 @@ function getDevices() {
     }
   }
 
+    
   function getDeviceError(jqXHR, textStatus, errorThrown) {
     if (jqXHR.statusCode == 404) {
       divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
@@ -76,10 +75,10 @@ function getDevices() {
     }
   }
 
+
   function deleteDevice() {
     var deviceId = $("#deleteID").val(); 
     console.log(deviceId); 
-
     try {
       $.ajax({
       url: '/devices/delete',
@@ -98,19 +97,26 @@ function getDevices() {
 
   function deleteSuccess (data, textStatus, jqXHR) {
     if(data.deleted == true) {
+      var deleteID = $("#deleteID").val(); 
+      deleteIdli = "#" + deleteID; 
+      console.log(deleteIdli); 
+      $(deleteIdli).remove(); 
       console.log(data.message); 
     }
   }
 
-  function deleteError () {
+
+
+  function deleteError (jqXHR, textStatus, errorThrown) {
     console.log("errror"); 
     if (jqXHR.statusCode == 404) {
-      divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
-      divToChange.show();
+      $(".deleteDivError").html("<span class='red-text text-darken-2'>Server could not be reached.</span>");
+      $(".deleteDivError").show();
     }
     else {
-      divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.status + " " + jqXHR.responseText + "</span>");
-      divToChange.show();
+      response = JSON.parse(jqXHR.responseText); 
+      $(".deleteDivError").html("<span class='red-text text-darken-2'>Error: " + jqXHR.status + " " + response.message + "</span>");
+      $(".deleteDivError").show();
     }
   }
 
