@@ -60,7 +60,7 @@ router.post('/delete', function(req, res, next) {
   }
 
   try {
-    Device.deleteOne({ deviceId: req.body.deviceId });
+    Device.remove({ deviceId: req.body.deviceId });
     responseJson.message = 'Device with ID ' + req.body.deviceId + ' successfully deleted.';
     return res.status(200).json(responseJson);
   }
