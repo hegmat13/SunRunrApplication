@@ -48,6 +48,28 @@ router.get('/status/:devid', function(req, res, next) {
   });
 });
 
+router.post('/delete', function(req, res, next) {
+  let responseJson = {
+    deleted: false,
+    message : ""
+  };
+
+  if( !req.body.hasOwnProperty("deviceId")) {
+    responseJson.message = "Missing deviceId.";
+    return res.status(400).json(responseJson);
+  }
+
+  try {
+    Device.deleteOne({ deviceId: req.body.deviceId });
+    responseJson.message = 'Device with ID ' + req.body.deviceId + ' successfully deleted.';
+    return res.status(200).json(responseJson);
+  }
+  catch (e) {
+    responseJson.message = e;
+    return res.status(400).json(responseJson);
+  }
+});
+
 router.post('/register', function(req, res, next) {
   let responseJson = {
     registered: false,
