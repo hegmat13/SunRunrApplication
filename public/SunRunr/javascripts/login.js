@@ -3,8 +3,38 @@ var divToChange = $("#ifFailure");
 function submitLogin() {
   let username = $('#userName').val();
   let password = $('#password').val();
+  let htmlTxt = '';
 
-  console.log(password)
+  let emailRe = /^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+
+  if (!emailRe.test(username)) {
+    $('#userName').removeClass('valid');
+		$('#userName').addClass('invalid');
+    htmlTxt += "<p><center><span class='red-text text-darken-2'>Please enter valid email address.</span></center></p>";
+	}
+	else {
+    $('#userName').removeClass('invalid');
+    $('#userName').addClass('valid');
+  }
+  
+  if (password == "") {
+    $('#password').removeClass('valid');
+		$('#password').addClass('invalid');
+    htmlTxt += "<p><center><span class='red-text text-darken-2'>Please enter a password.</span></center></p>";
+  }
+  else {
+    $('#password').removeClass('invalid');
+    $('#password').addClass('valid');
+  }
+
+  if (htmlTxt != '') {
+    divToChange.html(htmlTxt);
+    divToChange.show();
+    return;
+  }
+  else {
+    divToChange.hide();
+  }
 
   $.ajax({
   url: '/users/login',
@@ -45,7 +75,7 @@ $(function() {
     window.location.replace('homepage.html'); // Detects if user is already logged in and redirects them if they are
   }
   else {
-    $('.registerButton').click(submitLogin);
+    $('#download-button').click(submitLogin);
     $('#password').keypress(function(event) {
       if (event.which === 13) {
         submitLogin();

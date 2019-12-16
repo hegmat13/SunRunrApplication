@@ -16,8 +16,10 @@
   <link href="stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
   <!-- Script -->
-  	<script src="./javascripts/login.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="javascripts/materialize.js"></script>
+  <script src="javascripts/init.js"></script>
+  <script src="javascripts/login.js" defer></script>
 
 </head>
 <body>
@@ -48,7 +50,7 @@
   </nav>
 
   <div id="index-banner" class="parallax-container">
-  	<form id = "registerId">
+  	<!-- <form id = "registerId"> -->
       <div class="container">
         <br><br>
         <h1 class="header center teal-text text-lighten-2">Login</h1>
@@ -58,7 +60,7 @@
  			         <h5 class="white-text">Email</h5>
  			       </div>
   			      <div class="col l6 s12">
-   			         <input class = "inputEmail" type= "text" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName" required value = "" placeholder = "email@SunRunr.com" title = "Please enter a valid email address">
+   			         <input class = "inputEmail" type= "email" id = "userName" required value = "" placeholder = "email@SunRunr.com" title = "Please enter a valid email address">
        			  </div>
           </div>
     		  <div class="row">
@@ -71,12 +73,13 @@
      		  </div>
     	   </div>
       </div>
+      <div id='ifFailure'></div>
       <div class="row center">
           <button id="download-button" class="btn-large waves-effect waves-light teal lighten-1" value = "Register">Login</a>
       </div>
-  </form>
-  <h5 class="header col s12 light"><center>Need to create an account? 
-  		<a onclick = "window.location.href='registration.html'" class = "header col s12 light">Register Now</a></center></h5>
+    <!-- </form> -->
+    <h5 class="header col s12 light"><center>Need to create an account? 
+  		<a onclick = "window.location.href='registration.html'" class = "header col s12 light link">Register Now</a></center></h5>
 <!--     </div> -->
     <div class="parallax"><img src="./images/forestHikeA.jpg" alt="Unsplashed background img 1"></div>
   </div>
@@ -103,17 +106,5 @@
       </div>
     </div>
   </footer>
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="javascripts/materialize.js"></script>
-  <script src="javascripts/init.js"></script>
-	<script>
-		function logout(){
-		    document.getElementById("demo").style.color = "red";
-		    window.localStorage.removeItem('authToken');
-		    window.location.replace('login.html');
-		}
-	</script>
   </body>
 </html>
