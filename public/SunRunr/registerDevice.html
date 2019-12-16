@@ -1,70 +1,144 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>SunRunr Register A Device</title>
-	<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-	
-	<script src="./javascripts/registrationDevice.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <link rel="icon" href="./images/runMan.ico">
+  <title>Account Info</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <link href="stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-
 <body>
-<!--MENU-->
-<div class = "menu" id = "menu" style="width: 0px;">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a class = "menu1" href = "aboutUs.html">About Us</a><br>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo"><img height = "60" src = "./images/runningManSidebar.svg"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="summary.html">Summary View</a></li>
+        <li><a href="forecast.html">Forecast</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="registration.html">Register</a></li>
+      </ul>
 
-		<a class = "menu1" href = "summary.html">Summary View</a><br> 
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="summary.html">Summary View</a></li>
+        <li><a href="forecast.html">Forecast</a></li>
+        <li><a href="registerDevice.html">Account Info</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="registration.html">Register</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
 
-		<a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Account Info</h1>
+        <div class="row center">
+          <button id="1" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible1();"/>Update Email</button> 
+          <button id="2" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible2();"/>Update Password</button> 
+          <button id="3" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible3();"/>Update Devices</button>
+        </div>
+        
+
+      </div>
+    </div>
+    <div class="parallax"><img src="./images/desertRunB.jpg" alt="Unsplashed background img 1"></div>
+  </div>
 
 
-		<a class = "menu1" href = "forecast.html">Weather Forecast</a><br>
+  <div class="container">
+    <div class="section">
 
-		<a class = "menu1" href = "registerDevice.html">Devices</a><br>
+    </div>
+  </div>
 
-	    <a id = "demo" class = "menu1" onclick = "logout()">Log Out</a><br>
 
-		<a class = "menu1" href = "login.html">Login</a><br>
-	    <a class = "menu1" href = "registration.html">Register</a>
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+     <div class="container">
+        <div class="row center">
+            <div id="Div1" class = "divSwapAccountInfo">Div 1</div>
+            <div id="Div2" class = "divSwapAccountInfo">Div 2</div>
+            <div id="Div2" class = "divSwapAccountInfo">Div 3</div>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="./images/oceanRunA.jpg" alt="Unsplashed background img 2"></div>
+  </div>
 
-	</div>
-<!--END OF MENU-->
+  <div class="container">
+    <div class="section">
 
-<div class = "bigDiv">
-		<span class = "spanStyle" onclick="openNav()"><img src = "images/runningManSidebar.svg" class = "menuButtonImage2"></span>
-	<div class = "bigDiv2">
-		<h2 class = "subTitle">Register a Device</h2>
+    </div>
+  </div>
 
-		<p class = "registerButtonToCenter">To register a new device, enter the device id below, and select 'register' <br> If you would like to view your devices, select "view devices" below</p>
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About</h5>
+          <p class="grey-text text-lighten-4">Welcome to SunRunr<br>IoT Fall 2019<br>ECE 413<br>Prof. Roman Lysecky</p>
 
-		<form id = "registerId" onsubmit="submitRegister();return false;">
-			<div class = "registerPageDiv">
-				<div class = "rightColumn">
-					<!--One Example for a particle device is 1e0032123447343149111039 -->
-					<!--But what exactly are we putting here? -->
-					<input class = "iFieldLarge" type = "text" id = "regDevice" title = "Please enter a valid device id" placeholder = "1e0032123447343149111039" required>
-					
-					<br>
-					
-				</div>
-				<div class = "leftColumn">
-					Enter Device ID <br><br>
-				</div>
-			</div>
-			<br>
-			<div class = "registerButtonToCenter">
-				<button id = "button" class = "registerButton"  type = "button" value = "Register" >Register A Device</button>
-				<br><br>
-				<button onclick = "window.location.href='viewDevices.html'" class = "registerButton"  type = "submit" value = "Register" >View Devices</button>
-			</div>
-			<div id="ifFailure"></div>
-		</form>
-	</div>
-</div>
-<script>
 
-</script>
-</body>
+        </div>
+<!--         <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+
+          </ul>
+        </div> -->
+        <div class="col l3 s12">
+          <h5 class="white-text">Students</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Philippe Cutillas<br>Matthew Heger<br>Nicole Muchow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="javascripts/materialize.js"></script>
+  <script src="javascripts/init.js"></script>
+  <script>
+      function switchVisible1(){
+        console.log("Hello, World!");
+        document.getElementById("Div1").style.display == "block";
+        document.getElementById("Div2").style.display == "none";
+        document.getElementById("Div3").style.display == "none";
+      }
+      function switchVisible2(){
+        console.log("Hello, World!");
+        document.getElementById("Div1").style.display == "none";
+        document.getElementById("Div2").style.display == "block";
+        document.getElementById("Div3").style.display == "none";
+      }
+      function switchVisible3(){
+        console.log("Hello, World!");
+        document.getElementById("Div1").style.display == "none";
+        document.getElementById("Div2").style.display == "none";
+        document.getElementById("Div3").style.display == "block";
+      }
+  </script>
+  </body>
 </html>

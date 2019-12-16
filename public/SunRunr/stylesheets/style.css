@@ -18,6 +18,9 @@
   color: white;
   font-weight: bolder;
 }
+.divSwapAccountInfo{
+  display: block;
+}
 
 /*END*/
 nav ul a,
