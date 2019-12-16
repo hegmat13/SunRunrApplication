@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--set up for top of page-->
+	<meta charset="UTF-8">
+
+	<title>SunRunr</title>
+	<link rel="icon" href="./images/runMan.ico">
+	
+	<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css">
+
+<!--   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+</head>
+
+<body onload = "loadImage()">
+
+<!--MENU-->
+<div class = "menu" id = "menu" style="width: 0px;">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class = "menu1" href = "aboutUs.html">About Us</a><br>
+    <!--If Logged in-->
+    <a class = "menu1" href = "summary.html">Summary View</a><br> <!--INCLUDES ACTIVITY SUMMARY VIEW-->
+<!--  <a class = "menu1" href = "activitySummary.html">Activities Summary View</a><br> -->
+
+    <a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br><!--INCLUDES MAP-->
+    <!-- <a class = "menu1" href = "viewMap.html">Map</a><br> -->
+
+    <a class = "menu1" href = "forecast.html">Weather Forecast</a><br>
+
+
+    <!-- <a class = "menu1" href = "viewDevices.html">Devices</a><br> -->
+    <a class = "menu1" href = "registerDevice.html">Devices</a><br>
+<!--  <a class = "menu1" href = "login.html">Login</a><br>
+      <a class = "menu1" href = "registration.html">Register</a> -->
+
+      <a id = "demo" class = "menu1" onclick = "logout()">Log Out</a><br>
+      <!--END-->
+      <!--If NOT Logged in-->
+    <a class = "menu1" href = "login.html">Login</a><br>
+      <a class = "menu1" href = "registration.html">Register</a>
+      <!--END-->
+  </div>
+<!--END OF MENU-->
+
+<div class = "bigDiv">
+
+		<h1 class = "mainTitle">Weekly Weather Forecast</h1>
+	<span class = "spanStyle" onclick="openNav()"><img src = "images/runningManSidebar.svg" class = "menuButtonImage"></span>
+	<br><br><br><br><br><br>
+		
+	<div class = "welcomeToOurPage">
+        <a class="weatherwidget-io" href="https://forecast7.com/en/32d22n110d93/tucson/?unit=us" data-label_1="TUCSON" data-label_2="WEATHER" data-theme="marine" >TUCSON WEATHER</a>
+			<p class = "bodyText"> XXXX.</p>
+		</div>
+    <div>
+
+    </div>
+</div>
+<script>
+
+	function openNav() { document.getElementById("menu").style.width = "250px";}
+
+	function closeNav() {document.getElementById("menu").style.width = "0";}
+
+function logout() {
+
+  var ajax = new XMLHttpRequest();
+  ajax.open("GET", "controller.php?action=logout", true);
+  ajax.send();
+    ajax.onreadystatechange = function(){
+      if(ajax.readyState==4 && ajax.status==200){
+        window.location.replace("homepage.php");
+      }
+    }
+   document.getElementById("demo").style.color = "red";
+    window.localStorage.removeItem('authToken');
+    window.location.replace('login.html');
+}
+
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+
+
+// var weatherData='';
+// var uvData='';
+
+// queryString='http://api.openweathermap.org/data/2.5/forecast?lat=' + req.query.lat + '&lon='+req.query.lon+'&appid=97102cb975727cd39666c627735d67a1';
+
+// http.get(queryString, (resp) => {resp.on('data',(chunk)=>{weatherData += chunk;});
+
+// resp.on('end',()=>{weatherData=JSON.parse(weatherData);
+
+// queryString='http://api.openweathermap.org/data/2.5/uvi/forecast?lat=' + req.query.lat + '&lon='+req.query.lon+'&appid=97102cb975727cd39666c627735d67a1';
+
+// http.get(queryString, (resp) => {resp.on('data',(chunk)=>{uvData += chunk;});
+
+// resp.on('end',()=>{uvData=JSON.parse(uvData);
+
+// return res.status(200).json({success: true,message:"Here is your weather and UV Data", weatherData: weatherData, uvData: uvData});
+
+// }).on("error", (err) => {
+
+// console.log("Error: " + err);
+
+// });
+
+// });
+
+
+
+// }).on("error", (err) => {
+
+// console.log("Error: " + err);
+
+// });
+
+// });
+
+
+
+// //Get weather data from ACCU Weather
+
+// var locKey='';
+
+// queryString="http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=yygjbQ1SFbX1cxDoH9WGwQulEcG3ULcr&q="+req.query.lat+"%2C"+req.query.lon;
+
+// http.get(queryString, (resp) => {
+
+// resp.on('data',(chunk)=>{
+
+// locKey += chunk;
+
+// });
+
+// resp.on('end',()=>{
+
+// locKey=JSON.parse(locKey);
+
+// console.log(locKey.Key);
+
+// queryString='http://dataservice.accuweather.com/forecasts/v1/daily/5day/'+locKey.Key+'?apikey=yygjbQ1SFbX1cxDoH9WGwQulEcG3ULcr&details=true';
+
+// http.get(queryString, (resp) => {
+
+// resp.on('data',(chunk)=>{
+
+// weatherData += chunk;
+
+// });
+
+// resp.on('end',()=>{
+
+// weatherData=JSON.parse(weatherData);
+
+// return res.status(200).json({success: true,message:"Here is your weather and UV Data", weatherData: weatherData});
+
+// }).on("error", (err) => {
+
+// console.log("Error: " + err);
+
+// });
+
+// });
+
+
+
+// }).on("error", (err) => {
+
+// console.log("Error: " + err);
+
+// });
+
+// });
+</script>
+
+</body>
+</html>

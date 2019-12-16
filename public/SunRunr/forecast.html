@@ -1,67 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<!--set up for top of page-->
-	<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-	<title>SunRunr</title>
-	<link rel="icon" href="./images/runMan.ico">
-	
-	<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<!--   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <link rel="icon" href="./images/runMan.ico">
+  <title>SR - Summary</title>
 
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <link href="stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
+<body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo"><img height = "60" src = "./images/runningManSidebar.svg"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="summary.html">Summary View</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="registration.html">Register</a></li>
+        <li><a href="registerDevice.html">Account Info</a></li>
+      </ul>
 
-<body onload = "loadImage()">
-
-<!--MENU-->
-<div class = "menu" id = "menu" style="width: 0px;">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a class = "menu1" href = "aboutUs.html">About Us</a><br>
-    <!--If Logged in-->
-    <a class = "menu1" href = "summary.html">Summary View</a><br> <!--INCLUDES ACTIVITY SUMMARY VIEW-->
-<!--  <a class = "menu1" href = "activitySummary.html">Activities Summary View</a><br> -->
-
-    <a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br><!--INCLUDES MAP-->
-    <!-- <a class = "menu1" href = "viewMap.html">Map</a><br> -->
-
-    <a class = "menu1" href = "forecast.html">Weather Forecast</a><br>
-
-
-    <!-- <a class = "menu1" href = "viewDevices.html">Devices</a><br> -->
-    <a class = "menu1" href = "registerDevice.html">Devices</a><br>
-<!--  <a class = "menu1" href = "login.html">Login</a><br>
-      <a class = "menu1" href = "registration.html">Register</a> -->
-
-      <a id = "demo" class = "menu1" onclick = "logout()">Log Out</a><br>
-      <!--END-->
-      <!--If NOT Logged in-->
-    <a class = "menu1" href = "login.html">Login</a><br>
-      <a class = "menu1" href = "registration.html">Register</a>
-      <!--END-->
-  </div>
-<!--END OF MENU-->
-
-<div class = "bigDiv">
-
-		<h1 class = "mainTitle">Weekly Weather Forecast</h1>
-	<span class = "spanStyle" onclick="openNav()"><img src = "images/runningManSidebar.svg" class = "menuButtonImage"></span>
-	<br><br><br><br><br><br>
-		
-	<div class = "welcomeToOurPage">
-        <a class="weatherwidget-io" href="https://forecast7.com/en/32d22n110d93/tucson/?unit=us" data-label_1="TUCSON" data-label_2="WEATHER" data-theme="marine" >TUCSON WEATHER</a>
-			<p class = "bodyText"> XXXX.</p>
-		</div>
-    <div>
-
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="summary.html">Summary View</a></li>
+        <li><a href="registerDevice.html">Account Info</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="registration.html">Register</a></li>
+        <li><a href="registerDevice.html">Account Info</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
-</div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Forecast</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Your weekly forecast</h5>
+        </div>
+        
+
+      </div>
+    </div>
+    <div class="parallax"><img src="./images/forestHikeA.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+        <a class="weatherwidget-io" href="https://forecast7.com/en/32d22n110d93/tucson/?unit=us" data-label_1="TUCSON" data-label_2="WEATHER" data-theme="marine" >TUCSON WEATHER</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <br><br><br><br><br><br>
+    </div>
+  </div>
+
+  <!-- <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+     <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Activity Summary</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Your Personalized Activity Details</h5>
+        </div>
+        <div class="row center">
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="./images/oceanRunA.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+    </div>
+  </div> -->
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About</h5>
+          <p class="grey-text text-lighten-4">Welcome to SunRunr<br>IoT Fall 2019<br>ECE 413<br>Prof. Roman Lysecky</p>
+
+
+        </div>
+<!--         <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+
+          </ul>
+        </div> -->
+        <div class="col l3 s12">
+          <h5 class="white-text">Students</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Philippe Cutillas<br>Matthew Heger<br>Nicole Muchow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="javascripts/materialize.js"></script>
+  <script src="javascripts/init.js"></script>
 <script>
 
-	function openNav() { document.getElementById("menu").style.width = "250px";}
+  function openNav() { document.getElementById("menu").style.width = "250px";}
 
-	function closeNav() {document.getElementById("menu").style.width = "0";}
+  function closeNav() {document.getElementById("menu").style.width = "0";}
 
 function logout() {
 
@@ -172,6 +240,5 @@ function logout() {
 
 // });
 </script>
-
-</body>
+  </body>
 </html>
