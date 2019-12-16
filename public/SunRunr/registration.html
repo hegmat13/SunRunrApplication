@@ -48,7 +48,7 @@
   </nav>
 
   <div id="index-banner" class="parallax-container">
-  	<form id = "registerId">
+  	<!-- <form id = "registerId"> -->
 <!--   <div id="index-banner" class = "Nicole's"> -->
 <!--     <div class="section no-pad-bot"> -->
       <div class="container">
@@ -70,7 +70,9 @@
              </div>
               <div class="col l6 s12">
                  <input class = "inputEmail validate" type= "text" pattern = "[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName2" required value = "" placeholder = "confirmemail@SunRunr.com">
-                 <span class="helper-text" data-error="Enter a valid email address." data-success="Nooice."></span>
+                 <div class='email2'>
+                    <span class="helper-text" data-error="Enter a valid email address." data-success="Nooice."></span>
+                 </div>
               </div>
           </div>
           <div class="row">
@@ -78,7 +80,7 @@
                <h5 class="white-text">Zip Code</h5>
              </div>
               <div class="col l6 s12">
-                 <input class = "inputZip validate" pattern="^\d{5}$" id="zipcode" placeholder = "12345" required>
+                 <input class = "inputZip validate" type='text' pattern="^\d{5}$" id="zipcode" placeholder = "12345" required>
                  <span class="helper-text" data-error="Enter a valid zipcode." data-success="Nooice."></span>
               </div>
           </div>
@@ -87,7 +89,7 @@
                <h5 class="white-text">Password</h5>
              </div>
               <div class="col l6 s12">
-                 <input type = "password" class = "inputPassword validate" type = "text" id = "password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})" required>
+                 <input type = "password" class = "inputPassword validate" id = "password" pattern="^(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[0-9]+)(?=.*[!@#\$%\^&\*]+).{8,}$" required>
                  <span class="helper-text" data-error="Password is too weak." data-success="Nooice."></span>
               </div>
           </div>
@@ -96,7 +98,7 @@
       <div class="row center">
           <button value = "register" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Create an Account</a>
       </div>
-  </form>
+  <!-- </form> -->
   <h5 class="header col s12 light"><center>Already have an account? 
   		<a onclick = "window.location.href='login.html'" class = "header col s12 light">Login</a></center></h5>
 <!--     </div> -->
