@@ -6,6 +6,8 @@
 
 <!-- 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<script src="./javascripts/devices.js" defer></script>
+	<script src="./javascripts/viewDevices.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="app.js" defer></script>
 </head>
 
@@ -38,12 +40,17 @@
 	<div class = "bigDiv2">
 		<h2 class = "subTitle">Register a Device</h2>
 
-		<p class = "registerButtonToCenter">Here you can view your devices. To delete a device, simply click "delete" next to the device.</p>
-		<button id = "deleteButton" class = "registerButton"  type = "submit" value = "Register">Delete</button> 
+		<p class = "registerButtonToCenter">Here you can view your devices. To delete a device, enter the deviceID and click Delete.</p>
 		
+	
+		<button id = "deleteButton" class = "registerButton"  type = "submit" value = "Register">Delete</button> 
+		<input type = "text" class = "inputPassword"  id = "deleteID" >
+
+		<div class = "deleteDiv">
 		<ol class ="devicesList"> 
 			
 		</ol>
+		</div>
 
 		<!-- <button id = "deleteButton" class = "registerButton"  type = "submit" value = "Register">Delete</button> 
 
