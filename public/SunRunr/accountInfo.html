@@ -72,25 +72,26 @@
      <div class="container">
         <div class="row center">
             <div id="Div1">
-				<form id = "registerId">
+				<!-- <form id = "registerId"> -->
 				      <div class="container">
 				        <br><br>
 				        <h1 class="header center teal-text text-lighten-2">Update Email</h1>
 					       <div class="container">
 				    		  <div class="row">
 				      			  <div class="col l6 s12">
-				 			         <h5 class="white-text">New Email</h5>
-				 			       </div>
+				 			          <h5 class="white-text">New Email</h5>
+				 			        </div>
 				  			      <div class="col l6 s12">
-				   			         <input class = "inputEmail" type= "text" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName" required value = "" placeholder = "email@SunRunr.com" title = "Please enter a valid email address">
-				       			  </div>
+                        <input class = "inputEmail validate" type= "text" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName" required value = "" placeholder = "email@SunRunr.com">
+                        <span class="helper-text" data-error="Enter a valid email address." data-success="Nooice."></span>
+                      </div>
 				          </div>
 				    		  <div class="row">
 				      			  <div class="col l6 s12">
-				 			         <h5 class="white-text">Confirm New Email</h5>
-				 			       </div>
+				 			          <h5 class="white-text">Confirm New Email</h5>
+				 			        </div>
 				  			      <div class="col l6 s12">
-				   			         <input class = "inputEmail" type= "text" pattern = "[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName2" required value = "" placeholder = "confirmemail@SunRunr.com" title = "Please confirm your email address">
+				   			        <input class = "inputEmail" type= "text" pattern = "[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName2" required value = "" placeholder = "confirmemail@SunRunr.com" title = "Please confirm your email address">
 				       			  </div>
 				     		  </div>
 				    	   </div>
@@ -98,10 +99,10 @@
 				      <div class="row center">
 				          <button id="email-button" class="btn-large waves-effect waves-light teal lighten-1" value = "Register">Update Email Address</a>
 				      </div>
-				 </form>
+				 <!-- </form> -->
             </div>
             <div id="Div2" class = "divSwapAccountInfo">
-            	<form id = "registerId">
+            	<!-- <form id = "registerId"> -->
 				      <div class="container">
 				        <br><br>
 				        <h1 class="header center teal-text text-lighten-2">Update Password</h1>
@@ -111,7 +112,7 @@
 				 			         <h5 class="white-text">Current Password</h5>
 				 			       </div>
 				  			      <div class="col l6 s12">
-				   			         <input type = "password" class = "inputPassword" type = "text" id = "password" required>
+				   			         <input type = "password" class = "inputPassword" type = "text" id = "oldPassword" required>
 				       			  </div>
 				          </div>
 				    		  <div class="row">
@@ -119,15 +120,15 @@
 				 			         <h5 class="white-text">New Password</h5>
 				 			       </div>
 				  			      <div class="col l6 s12">
-				   			         <input type = "password" class = "inputPassword" type = "text" id = "password" required>
+				   			         <input type = "password" class = "inputPassword" type = "text" id = "newPassword" required>
 				       			  </div>
 				     		  </div>
 				    	   </div>
 				      </div>
 				      <div class="row center">
-				          <button id="download-button" class="btn-large waves-effect waves-light teal lighten-1" value = "Register">Update Password</a>
+				          <button id="password-button" class="btn-large waves-effect waves-light teal lighten-1" value = "Register">Update Password</a>
 				      </div>
-				 </form>
+				 <!-- </form> -->
             </div>
             <div id="Div3" class = "divSwapAccountInfo">Div 3</div>
         </div>
