@@ -1,84 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>SunRunr Login</title>
-	<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-	
-	<script src="./javascripts/login.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <link rel="icon" href="./images/runMan.ico">
+  <title>Login</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <link href="stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-
 <body>
-<!--MENU-->
-<div class = "menu" id = "menu" style="width: 0px;">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a class = "menu1" href = "homepage.html">Home</a><br>
-		<a class = "menu1" href = "aboutUs.html">About Us</a><br>
-		<!--If Logged in-->
-		<a class = "menu1" href = "summary.html">Summary View</a><br> <!--INCLUDES ACTIVITY SUMMARY VIEW-->
-<!-- 	<a class = "menu1" href = "activitySummary.html">Activities Summary View</a><br> -->
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo"><img height = "60" src = "./images/runningManSidebar.svg"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="summary.html">Summary View</a></li>
+        <li><a href="forecast.html">Forecast</a></li>
+        <li><a href="registration.html">Register</a></li>
+        <li><a href="registerDevice.html">Account Info</a></li>
+      </ul>
 
-		<a class = "menu1" href = "activityDetail.html">Activity Detail View</a><br><!--INCLUDES MAP-->
-		<!-- <a class = "menu1" href = "viewMap.html">Map</a><br> -->
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="summary.html">Summary View</a></li>
+        <li><a href="forecast.html">Forecast</a></li>
+        <li><a href="registerDevice.html">Account Info</a></li>
+        <li><a href="registration.html">Register</a></li>
+        <li><a href="registerDevice.html">Account Info</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
 
-		<a class = "menu1" href = "forecast.html">Weather Forecast</a><br>
+  <div id="index-banner" class="parallax-container">
+<!--   <div id="index-banner" class = "Nicole's"> -->
+<!--     <div class="section no-pad-bot"> -->
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Login</h1>
+	       <div class="container">
+    		  <div class="row">
+      			  <div class="col l6 s12">
+ 			         <h5 class="white-text">Email</h5>
+ 			       </div>
+  			      <div class="col l6 s12">
+   			         <h5 class="white-text">abc</h5>
+       			  </div>
+     		  </div>
+    	   </div>
+      </div>
+      <div class="container">
+	       <div class="container">
+    		  <div class="row">
+      			  <div class="col l6 s12">
+ 			         <h5 class="white-text">Password</h5>
+ 			       </div>
+  			      <div class="col l6 s12">
+   			         <h5 class="white-text">XYZ</h5>
+       			  </div>
+     		  </div>
+    	   </div>
+      </div>
+<!--     </div> -->
+    <div class="parallax"><img src="./images/forestHikeA.jpg" alt="Unsplashed background img 1"></div>
+  </div>
 
 
-		<!-- <a class = "menu1" href = "viewDevices.html">Devices</a><br> -->
-		<a class = "menu1" href = "registerDevice.html">Devices</a><br>
-<!-- 	<a class = "menu1" href = "login.html">Login</a><br>
-	    <a class = "menu1" href = "registration.html">Register</a> -->
+ 
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About</h5>
+          <p class="grey-text text-lighten-4">Welcome to SunRunr<br>IoT Fall 2019<br>ECE 413<br>Prof. Roman Lysecky</p>
 
-<!-- 	    <a id = "demo" class = "menu1" onclick = "logout()">Log Out</a><br> -->
-	    <!--END-->
-	    <!--If NOT Logged in-->
-	    <a class = "menu1" href = "registration.html">Register</a>
-	    <!--END-->
-	</div>
-<!--END OF MENU-->
 
-<div class = "bigDiv">
-		<span class = "spanStyle" onclick="openNav()"><img src = "images/runningManSidebar.svg" class = "menuButtonImage2"></span>
-	<div class = "bigDiv2">
-		<h2 class = "subTitle">Log in</h2>
+        </div>
+<!--         <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
 
-		<p class = "registerButtonToCenter">Log in to access your SunRunr activities, add or remove a device, and view details of your adventures!</p>
+          </ul>
+        </div> -->
+        <div class="col l3 s12">
+          <h5 class="white-text">Students</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Philippe Cutillas<br>Matthew Heger<br>Nicole Muchow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
 
-		<form id = "registerId">
-			<div class = "registerPageDiv">
-				<div class = "rightColumn">
 
-					<input class = "inputEmail" type= "text" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName" required value = "" placeholder = "email@SunRunr.com" title = "Please enter a valid email address">
-					<br>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="javascripts/materialize.js"></script>
+  <script src="javascripts/init.js"></script>
 
-					<input type = "password" class = "inputPassword" type = "text" id = "password" required>
-					
-					<br>
-				</div>
-				<div class = "leftColumn">
-					Email Address <br><br>
-					Password <br>
-				</div>
-			</div>
-			<br><br><br>
-			<div class = "registerButtonToCenter">
-				<button class = "registerButton"  type = "button" value = "Register" >Login</button>
-				<br><br>
-				<div id="ifFailure"></div>
-				Need to create an account?<br>
-				<a onclick = "window.location.href='registration.html'" class = "haveAccount">Register Now</a>
-			</div>
-		</form>
-	</div>
-</div>
-<script>
-function logout(){
-    document.getElementById("demo").style.color = "red";
-    window.localStorage.removeItem('authToken');
-    window.location.replace('login.html');
-}
-</script>
-</body>
+  </body>
 </html>
