@@ -61,7 +61,6 @@ router.post('/register', function(req, res, next) {
    });   
 });
 
-/*
 router.get("/account" , function(req, res) {
    // Check for authentication token in x-auth header
    if (!req.headers["x-auth"]) {
@@ -74,18 +73,18 @@ router.get("/account" , function(req, res) {
       var decodedToken = jwt.decode(authToken, secret);
       var userStatus = {};
       
-      User.findOne(  username: decodedToken   username}, function(err, user) {
+      User.findOne({username: decodedToken.username}, function(err, user) {
          if(err) {
             return res.status(400).json({success: false, message: "User does not exist."});
          }
          else {
             userStatus['success'] = true;
-            userStatus[ username'] = user username;
+            userStatus['username'] = user.username;
             userStatus['lastAccess'] = user.lastAccess;
             userStatus['zipcode'] = user.zipcode;
             
             // Find devices based on decoded token
-		      Device.find({ use username : decodedToken username}, function(err, devices) {
+		      Device.find( {username: decodedToken.username}, function(err, devices) {
 			      if (!err) {
 			         // Construct device list
 			         let deviceList = []; 
@@ -95,10 +94,12 @@ router.get("/account" , function(req, res) {
 				               apikey: device.apikey,
 				         });
 			         }
-			         userStatus['devices'] = deviceList;
+                  userStatus['devices'] = deviceList;
+                  return res.status(200).json(userStatus);
 			      }
-			      
-               return res.status(200).json(userStatus);            
+			      else {
+                  return res.status(400).json({success: false, message: 'User has no registered devices.'})
+               }       
 		      });
          }
       });
@@ -106,7 +107,7 @@ router.get("/account" , function(req, res) {
    catch (ex) {
       return res.status(401).json({success: false, message: "Invalid authentication token."});
    }
-}); */ 
+});
 
 
 module.exports = router;

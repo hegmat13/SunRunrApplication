@@ -4,7 +4,17 @@ function submitLogin() {
   let username = $('#userName').val();
   let password = $('#password').val();
 
-  console.log(password)
+  let emailRe = /^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+
+  if (!emailRe.test(username)) {
+    $('.inputEmail').addClass('error');
+    divToChange.html("<p><span class='red-text text-darken-2'>Please enter valid email address.</span></p>");
+    divToChange.show();
+    return;
+	}
+	else {
+		$('.inputEmail').removeClass('error');
+	}
 
   $.ajax({
   url: '/users/login',

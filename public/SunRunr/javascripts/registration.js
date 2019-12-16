@@ -20,7 +20,7 @@ function submitRegister() {
 
 function registerSuccess(data, textStatus, jqXHR) {
   if (data.success) {  
-    window.location.replace("homepage.html");
+    window.location.replace("registerDevice.html");
   }
   else {
     divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
