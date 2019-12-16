@@ -45,9 +45,9 @@
         <br><br>
         <h1 class="header center teal-text text-lighten-2">Account Info</h1>
         <div class="row center">
-          <button id="1" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible1();"/>Update Email</button> 
-          <button id="2" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible2();"/>Update Password</button> 
-          <button id="3" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible3();"/>Update Devices</button>
+          <button id="1" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(1);"/>Update Email</button> 
+          <button id="2" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(2);"/>Update Password</button> 
+          <button id="3" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(3);"/>Update Devices</button>
         </div>
         
 
@@ -68,9 +68,9 @@
     <div class="section no-pad-bot">
      <div class="container">
         <div class="row center">
-            <div id="Div1" class = "divSwapAccountInfo">Div 1</div>
+            <div id="Div1">Div 1</div>
             <div id="Div2" class = "divSwapAccountInfo">Div 2</div>
-            <div id="Div2" class = "divSwapAccountInfo">Div 3</div>
+            <div id="Div3" class = "divSwapAccountInfo">Div 3</div>
         </div>
       </div>
     </div>
@@ -92,14 +92,6 @@
 
 
         </div>
-<!--         <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-
-          </ul>
-        </div> -->
         <div class="col l3 s12">
           <h5 class="white-text">Students</h5>
           <ul>
@@ -121,24 +113,26 @@
   <script src="javascripts/materialize.js"></script>
   <script src="javascripts/init.js"></script>
   <script>
-      function switchVisible1(){
-        console.log("Hello, World!");
-        document.getElementById("Div1").style.display == "block";
-        document.getElementById("Div2").style.display == "none";
-        document.getElementById("Div3").style.display == "none";
+      function switchVisible(selected){
+      if(selected == 1){
+        console.log("Making Div1 Visible");
+        document.getElementById("Div1").style.display = "block";
+        document.getElementById("Div2").style.display = "none";
+        document.getElementById("Div3").style.display = "none";
       }
-      function switchVisible2(){
-        console.log("Hello, World!");
-        document.getElementById("Div1").style.display == "none";
-        document.getElementById("Div2").style.display == "block";
-        document.getElementById("Div3").style.display == "none";
+      else if(selected == 2){
+        console.log("Making Div2 Visible");
+        document.getElementById("Div1").style.display = "none";
+        document.getElementById("Div2").style.display = "block";
+        document.getElementById("Div3").style.display = "none";
       }
-      function switchVisible3(){
-        console.log("Hello, World!");
-        document.getElementById("Div1").style.display == "none";
-        document.getElementById("Div2").style.display == "none";
-        document.getElementById("Div3").style.display == "block";
+      else if(selected == 3){
+        console.log("Making Div3 Visible");
+        document.getElementById("Div1").style.display = "none";
+        document.getElementById("Div2").style.display = "none";
+        document.getElementById("Div3").style.display = "block";;
       }
+    }
   </script>
   </body>
 </html>
