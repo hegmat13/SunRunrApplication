@@ -59,9 +59,37 @@
 
 
   <div class="container">
-    <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
     <div class="section">
+ <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">directions_bike</i></h2>
+            <h5 class="center">Total Activity Duration<br>Last 7 Days</h5>
+            <p class="light"><center>Insert data here</center></p>
+          </div>
+        </div>
 
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">wb_sunny</i></h2>
+            <h5 class="center">Total UV Exposure<br>Last 7 Days</h5>
+            <p class="light"><center>Insert data here</center></p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">grain</i></h2>
+            <h5 class="center">Total Calories Burned<br>Last 7 Days</h5>
+
+            <p class="light"><center>Insert data here</center></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
     </div>
   </div>
 
@@ -81,9 +109,37 @@
     <div class="parallax"><img src="./images/oceanRunA.jpg" alt="Unsplashed background img 2"></div>
   </div>
 
-  <div class="container">
+   <div class="container">
     <div class="section">
-      <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+      <table>
+        <tr>
+          <th>Activity Date</th>
+          <th>Activity Duration</th>
+          <th>Calories Burned</th>
+          <th>UV Exposure</th>
+          <th>Temperature</th>
+          <th>Humidity</th>
+          <th>Go To Activity</th>
+        </tr>
+        <tr>
+          <td>12/5/2019</td> <!--month + "/" + date + "/" + year-->
+          <td>25 minutes</td> <!--Duration in minutes + "minutes"-->
+          <td>75</td> <!--Calories-->
+          <td>TBD</td> <!--UV Exposure value-->
+          <td>69 F</td> <!--degrees + " F"-->
+          <td>TBD</td> <!--Humidity Value-->
+          <td><a href="summary.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Go to Activity</a></td> <!--Button to link to activity details-->
+        </tr>
+        <tr><!-- will want one row per activity summary-->
+          <td> </td> 
+          <td> </td>
+          <td> </td>
+          <td> </td>    
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+      </table>
     </div>
   </div>
 
@@ -93,17 +149,8 @@
         <div class="col l6 s12">
           <h5 class="white-text">About</h5>
           <p class="grey-text text-lighten-4">Welcome to SunRunr<br>IoT Fall 2019<br>ECE 413<br>Prof. Roman Lysecky</p>
-
-
         </div>
-<!--         <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
 
-          </ul>
-        </div> -->
         <div class="col l3 s12">
           <h5 class="white-text">Students</h5>
           <ul>
