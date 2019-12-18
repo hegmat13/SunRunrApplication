@@ -53,14 +53,18 @@
         <div class="row center">
           <!-- <button id="1" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(1);"/>Update Email</button> 
           <button id="2" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(2);"/>Update Password</button>  -->
-          <button id="3" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(3);"/>Update Devices</button>
+          <!-- <button id="3" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(3);"/>Update Devices</button> -->
+          <div class="col l6 s12">
+            <input class = "" type='text' pattern="/^[0-9a-f]{24}$/" id="regDevice" placeholder = "1f002a000e504b5350313120" required>
+          </div>
+          <div class="col l6 s12">
+            <button id="4" class="btn-large waves-effect waves-light teal lighten-1" value="Click">Add Device</button>
+          </div>
         </div>
-        <button id="4" class="btn-large waves-effect waves-light teal lighten-1" value="Click">Add Device</button>
-        <input class = "" type='text' pattern="/^[0-9a-f]{24}$/" id="regDevice" placeholder = "1f002a000e504b5350313120" required>
         <div class ="ErrorDiv"></div>
       </div>
     </div>
-    <div class="parallax"><img src="./images/desertRunB.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="./images/LastLights.png" alt="Unsplashed background img 1"></div>
   </div>
 
 
@@ -77,16 +81,19 @@
         <div class="row center">
             <!-- <div id="Div1"></div>
             <div id="Div2" class = "divSwapAccountInfo"></div> -->
-            <div id="Div3">  <!--class = "divSwapAccountInfo"> --> 
-                <div class = "updateDiv">Here you can view your devices. To delete a device, simply click "delete" next to the device.</div>
-              <button id="5" class="btn-large waves-effect waves-light teal lighten-1" value="Click">Delete Device</button>
+            <div class = "updateDiv">Here you can view your devices. To delete a device, simply click "delete" next to the device.</div>
+            
+            <div class="col l6 s12">
               <input class = "regDevice" type='text' pattern="/^[0-9a-f]{24}$/" id="deleteID" placeholder = "1f002a000e504b5350313120" required>
-              <div class = "devicesList"></div>
             </div>
+            <div class="col l6 s12">
+              <button id="5" class="btn-large waves-effect waves-light teal lighten-1" value="Click">Delete Device</button>
+            </div>
+            <div class = "devicesList"></div>
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="./images/oceanRunA.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax"><img src="./images/background3.jpg" alt="Unsplashed background img 2"></div>
   </div>
 
   <div class="container">
