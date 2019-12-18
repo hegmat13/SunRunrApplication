@@ -1,5 +1,7 @@
 var divToChange = $("#ifFailure");
 
+$("#download-button").click(submitLogin); 
+
 function submitLogin() {
   let username = $('#userName').val();
   let password = $('#password').val();
@@ -12,14 +14,14 @@ function submitLogin() {
     $('#password').removeClass('invalid');
   }
 
-  if (htmlTxt != '') {
+ /* if (htmlTxt != '') {
     divToChange.html(htmlTxt);
     divToChange.show();
     return;
   }
   else {
     divToChange.hide();
-  }
+  }*/ 
 
   $.ajax({
   url: '/users/login',
