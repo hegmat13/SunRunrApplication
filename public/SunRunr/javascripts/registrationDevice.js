@@ -25,7 +25,7 @@ function registerSuccess(data, textStatus, jqXHR) {
     window.location.replace("homepage.html");
   }
   else {
-    divToChange.html("<span class='red-text text-darken-2'>" + data.message + "</span>");
+    divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
     divToChange.show();
   }
 }
