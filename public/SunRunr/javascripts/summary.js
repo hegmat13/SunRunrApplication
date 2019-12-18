@@ -11,7 +11,7 @@ function logout() {
 }
 
 function loadDeviceData() {
-  let devID = $('#regDevice').val()
+  let devID = $('#regDevice').val();
 
   if (!isValidID()) return;
   
@@ -96,15 +96,15 @@ function isValidID() {
 }
 
 $(function() {  
-  // if (!window.localStorage.getItem('authToken')) {
-  //     window.location.replace('login.html');
-  // }
-  // else {
+  if (!window.localStorage.getItem('authToken')) {
+      window.location.replace('login.html');
+  }
+  else {
     $('.registerButton').click(loadDeviceData);
     $('#password').keypress(function(event) {
       if (event.which === 13) {
         loadDeviceData();
       }
     });
-  // }
+  }
 });

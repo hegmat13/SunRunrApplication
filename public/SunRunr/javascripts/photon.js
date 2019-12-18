@@ -36,7 +36,8 @@ function registerError(jqXHR, textStatus, errorThrown) {
 	divToChange.show();
   }
   else {
-    divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.responseJSON.message + "</span>");
+    response = JSON.parse(jqXHR.responseText); 
+    divToChange.html("<span class='red-text text-darken-2'>Error: " + response.message + "</span>");
     divToChange.show();
   }
 }

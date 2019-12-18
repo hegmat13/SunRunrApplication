@@ -1,6 +1,6 @@
 var divToChange = $("#ifFailure");
 
-$(".registerButton").click(submitRegister); 
+$("#regButton").click(submitRegister); 
 
 function submitRegister() {
 	let deviceId = $('#regDevice').val();
