@@ -7,13 +7,17 @@
 
   <link rel="icon" href="./images/runMan.ico">
   <title>Account Info</title>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link href="stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
   <link href="stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  <script src="javascripts/materialize.js" defer></script>
+  <script src="javascripts/init.js" defer></script>
+  <script src="javascripts/accountInfo.js" defer></script>
 </head>
 <body>
   <nav class="white" role="navigation">
@@ -90,9 +94,8 @@
 				      			  <div class="col l6 s12">
 				 			          <h5 class="white-text">Confirm New Email</h5>
 				 			        </div>
-				  			      <div class="col l6 s12">
+				  			      <div class="col l6 s12 email2">
 				   			        <input class = "inputEmail validate" type= "text" pattern = "[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName2" required value = "" placeholder = "email@SunRunr.com">
-                        <span class="helper-text" data-error="Enter a valid email address." data-success="Nooice."></span>
                       </div>
 				     		  </div>
 				    	   </div>
@@ -120,9 +123,10 @@
 				      			  <div class="col l6 s12">
 				 			         <h5 class="white-text">New Password</h5>
 				 			       </div>
-				  			      <div class="col l6 s12">
-				   			         <input type = "password" class = "inputPassword" type = "text" id = "newPassword" required>
-				       			  </div>
+				  			      <div class="col l6 s12 pw">
+				   			         <input type = "password" class = "inputPassword validate" type = "text" id = "newPassword" pattern="^(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[0-9]+)(?=.*[!@#\$%\^&\*]+).{8,}$" required>
+                          <span class="helper-text" id='removable' data-error="Password is too weak." data-success="Nooice."></span>
+                        </div>
 				     		  </div>
 				    	   </div>
 				      </div>
@@ -135,7 +139,7 @@
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="./images/oceanRunA.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax"><img src="./images/LastLights.png" alt="Unsplashed background img 2"></div>
   </div>
 
   <div class="container">
@@ -168,11 +172,6 @@
     </div>
   </footer>
 
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="javascripts/materialize.js"></script>
-  <script src="javascripts/init.js"></script>
   <script>
       function switchVisible(selected){
       if(selected == 1){

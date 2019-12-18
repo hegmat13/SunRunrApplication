@@ -42,19 +42,23 @@ function registerError(jqXHR, textStatus, errorThrown) {
 function isValidInput() {
 	let email1 = $('#userName').val();
 	let email2 = $('#userName2');
+	let isValid = true;
 
 	if (email1 != email2.val()) {
 		email2.removeClass('validate');
 		email2.addClass('invalid');
 		$('.email2').append('<span class="helper-text" data-error="Emails do not match."></span>');
-		return false;
+		isValid = false;
 	}
 	else {
 		email2.removeClass('invalid');
 		email2.addClass('validate');
 		$('.email2').append('<span class="helper-text" data-error="Enter a valid email address."></span>');
-		return true;
 	}
+
+	
+
+	return isValid;
 }
 
 $(function () {
