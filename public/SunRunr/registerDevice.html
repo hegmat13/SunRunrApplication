@@ -14,6 +14,8 @@
   <link href="stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
   <link href="stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <script src="javascripts/registrationDevice.js" defer></script>
 </head>
 <body>
   <nav class="white" role="navigation">
@@ -52,8 +54,9 @@
           <button id="2" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(2);"/>Update Password</button> 
           <button id="3" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(3);"/>Update Devices</button>
         </div>
-        <button id="3" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(3);"/>Add Device</button>
-        <input class = "inputZip validate" type='text' pattern="" id="zipcode" placeholder = "1f002a000e504b5350313120" required>
+        <button id="4" class="btn-large waves-effect waves-light teal lighten-1" value="Click">Delete Device</button>
+        <input class = "" type='text' pattern="/^[0-9a-f]{24}$/" id="regDevice" placeholder = "1f002a000e504b5350313120" required>
+        <div id="ErrorDiv"></div>
       </div>
     </div>
     <div class="parallax"><img src="./images/desertRunB.jpg" alt="Unsplashed background img 1"></div>
@@ -73,7 +76,10 @@
         <div class="row center">
             <div id="Div1">Div 1</div>
             <div id="Div2" class = "divSwapAccountInfo">Div 2</div>
-            <div id="Div3" class = "divSwapAccountInfo">Div 3</div>
+            <div id="Div3" class = "divSwapAccountInfo">
+              <button id="5" class="btn-large waves-effect waves-light teal lighten-1" value="Click">Add Device</button>
+              <input class = "regDevice" type='text' pattern="/^[0-9a-f]{24}$/" id="" placeholder = "1f002a000e504b5350313120" required>
+            </div>
         </div>
       </div>
     </div>
