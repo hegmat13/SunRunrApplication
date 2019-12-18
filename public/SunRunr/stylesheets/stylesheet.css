@@ -276,3 +276,9 @@ to {top:0; opacity:1}
 .link {
 	cursor: pointer;
 }
+
+.devicesTop {
+	margin-top: 15px; 
+	margin-bottom: 20px; 
+	font-size: 15pt; 
+  }

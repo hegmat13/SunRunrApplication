@@ -78,6 +78,13 @@ footer.page-footer {
 }
 
 .updateDiv {
-  margin-bottom: 30px; 
+  margin-top: 50px; 
+  margin-bottom: 50px; 
+  font-size: 15pt; 
+}
+
+.devicesTop {
+  margin-top: 50px; 
+  margin-bottom: 50px; 
   font-size: 15pt; 
 }

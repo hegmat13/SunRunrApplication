@@ -1,8 +1,7 @@
 var divToChange = $(".ErrorDiv");
 
 var deleteID = $("#deleteID").val(); 
-var divToChange = $(".deleteDivError"); 
-$("#deleteButton").click(deleteDevice); 
+$("#5").click(deleteDevice); 
 
 getDevices(); 
 
@@ -16,7 +15,7 @@ function getDevices() {
    // let deviceId = $('#regDevice').val();
     let username = window.localStorage.getItem('username');   //Get user email address from localStorage 
    // let authToken =  window.localStorage.getItem('authToken');   //Get user email address from localStorage 
-   if (!isValidInput()) return;
+  // if (!isValidInput()) return;
    // console.log(deviceId); 
     console.log(username); 
    // console.log(deviceData.deviceList[0].apikey); 
@@ -41,17 +40,20 @@ function getDevices() {
   }
 
   function getDeviceSuccess(data, textStatus, jqXHR) {
-    var listHtml = "<h3>All devices currently registered to " + window.localStorage.getItem('username') + ":</h3>"; 
+    var listHtml = ""; 
+    listHtml = "<div class='devicesTop' >All devices currently registered to " + window.localStorage.getItem('username') + ":</div>"; 
+
     console.log(data); 
     console.log(data.devices); 
     console.log(data.devices.length); 
+
     if (data.success) {  
       for(let obj of data.devices) {
         let deviceId = obj.deviceId; 
         let apikey = obj.apikey; 
         console.log(deviceId); 
         console.log(apikey); 
-        listHtml += "<li id=" + deviceId + " class = currDevices li> Device ID: " + deviceId + "<br></br> API key: " + apikey; 
+        listHtml += "<p id=" + deviceId +"> Device ID: " + deviceId + ", API key: " + apikey + " </p> "; 
       }
 
      $(".devicesList").html(listHtml); 
