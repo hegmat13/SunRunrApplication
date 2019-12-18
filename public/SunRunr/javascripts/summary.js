@@ -1,4 +1,4 @@
-var divToChange = $("#ifFailure");
+//var divToChange = $("#ifFailure");
 
 function openNav() { document.getElementById("menu").style.width = "250px";}
 
@@ -28,7 +28,6 @@ function loadDeviceData() {
 
 function loadSuccess(data, textStatus, jqXHR) { // TODO: Needs to change
   if (data.success) {
-    let parToEdit = $('#dataArea');
     let addHTML = '<p>Recorded posts from device:</p>';
 
     $('.formToRemove').addClass('hide');
@@ -40,8 +39,11 @@ function loadSuccess(data, textStatus, jqXHR) { // TODO: Needs to change
       let uv = obj.uv;
       let publishTime = obj.publishTime;
 
-      addHTML += '<ul><li>Published: ' + publishTime + '</li><li>Latitude/Longitude: ' + lat + ' / ' + lon + '</li><li>Speed: ' + GPS_speed + ' knots</li><li>UV Reading: ' + uv + ' mW/cm&#178;</li></ul><br>';
+     // addHTML += '<ul><li>Published: ' + publishTime + '</li><li>Latitude/Longitude: ' + lat + ' / ' + lon + '</li><li>Speed: ' + GPS_speed + ' knots</li><li>UV Reading: ' + uv + ' mW/cm&#178;</li></ul><br>';
     }
+
+    $("uv").html(uv); 
+    $("duration").html(publishTime); 
 
     parToEdit.html(addHTML);    
   }
