@@ -1,4 +1,4 @@
-var divToChange = $("#ErrorDiv");
+var divToChange = $(".ErrorDiv");
 
 $("#4").click(submitRegister); 
 $("deleteDevice").click(isValidInput); 

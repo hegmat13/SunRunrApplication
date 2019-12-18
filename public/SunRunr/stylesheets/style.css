@@ -76,3 +76,8 @@ footer.page-footer {
 #failText {
   color:lightcoral; 
 }
+
+.updateDiv {
+  margin-bottom: 30px; 
+  font-size: 15pt; 
+}
