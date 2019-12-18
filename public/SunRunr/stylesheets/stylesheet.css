@@ -273,6 +273,6 @@ to {top:0; opacity:1}
 	display: none;
 }
 
-.link :hover {
+.link {
 	cursor: pointer;
 }

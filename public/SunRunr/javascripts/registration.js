@@ -20,7 +20,7 @@ function submitRegister() {
 
 function registerSuccess(data, textStatus, jqXHR) {
   if (data.success) {  
-    window.location.replace("registerDevice.html");
+    window.location.replace("registerDevice.html"); // Directs user to register their first device when successfully registered.
   }
   else {
     divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
@@ -46,20 +46,20 @@ function isValidInput() {
 	if (email1 != email2.val()) {
 		email2.removeClass('validate');
 		email2.addClass('invalid');
-		$('.email2').html('<span class="helper-text" data-error="Emails do not match." data-success="Nooice."></span>');
+		$('.email2').append('<span class="helper-text" data-error="Emails do not match."></span>');
 		return false;
 	}
 	else {
 		email2.removeClass('invalid');
 		email2.addClass('validate');
-		$('.email2').html('<span class="helper-text" data-error="Enter a valid email address." data-success="Nooice."></span>');
+		$('.email2').append('<span class="helper-text" data-error="Enter a valid email address."></span>');
 		return true;
 	}
 }
 
 $(function () {
 	if (window.localStorage.getItem('authToken')) {
-		window.location.replace('homepage.html'); // Detects if user is already logged in and redirects them if they are
+		window.location.replace('index.html'); // Detects if user is already logged in and redirects them if they are
 	}
 	else {
 		$('#download-button').click(submitRegister);

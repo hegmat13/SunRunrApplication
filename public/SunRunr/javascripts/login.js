@@ -3,28 +3,13 @@ var divToChange = $("#ifFailure");
 function submitLogin() {
   let username = $('#userName').val();
   let password = $('#password').val();
-  let htmlTxt = '';
-
-  let emailRe = /^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
-
-  if (!emailRe.test(username)) {
-    $('#userName').removeClass('valid');
-		$('#userName').addClass('invalid');
-    htmlTxt += "<p><center><span class='red-text text-darken-2'>Please enter valid email address.</span></center></p>";
-	}
-	else {
-    $('#userName').removeClass('invalid');
-    $('#userName').addClass('valid');
-  }
   
   if (password == "") {
-    $('#password').removeClass('valid');
-		$('#password').addClass('invalid');
-    htmlTxt += "<p><center><span class='red-text text-darken-2'>Please enter a password.</span></center></p>";
+    $('#password').addClass('invalid');
+    $('.pw').append('<span class="helper-text" data-error="Please enter a password."></span>');
   }
   else {
     $('#password').removeClass('invalid');
-    $('#password').addClass('valid');
   }
 
   if (htmlTxt != '') {

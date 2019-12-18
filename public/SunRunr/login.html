@@ -55,33 +55,36 @@
         <br><br>
         <h1 class="header center teal-text text-lighten-2">Login</h1>
 	       <div class="container">
+          <p><br></p>
     		  <div class="row">
       			  <div class="col l6 s12">
  			         <h5 class="white-text">Email</h5>
  			       </div>
   			      <div class="col l6 s12">
-   			         <input class = "inputEmail" type= "email" id = "userName" required value = "" placeholder = "email@SunRunr.com" title = "Please enter a valid email address">
+                  <input class = "inputEmail validate" pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type= "email" id = "userName" required value = "" placeholder = "email@SunRunr.com" title = "Please enter a valid email address">
+                  <span class="helper-text" data-error="Enter a valid email address." data-success='Nooice.'></span>
        			  </div>
           </div>
     		  <div class="row">
       			  <div class="col l6 s12">
  			         <h5 class="white-text">Password</h5>
  			       </div>
-  			      <div class="col l6 s12">
-   			         <input type = "password" class = "inputPassword" type = "text" id = "password" required>
+  			      <div class="col l6 s12 pw">
+                  <input type = "password" class = "inputPassword" type = "text" id = "password" required>
        			  </div>
      		  </div>
     	   </div>
       </div>
       <div id='ifFailure'></div>
+      <p><br></p>
       <div class="row center">
-          <button id="download-button" class="btn-large waves-effect waves-light teal lighten-1" value = "Register">Login</a>
+          <button id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Login<i class="material-icons right">keyboard_arrow_right</i></a>
       </div>
     <!-- </form> -->
-    <h5 class="header col s12 light"><center>Need to create an account? 
-  		<a onclick = "window.location.href='registration.html'" class = "header col s12 light link">Register Now</a></center></h5>
+    <h5 class="header col s12 light"><center><br>Need to create an account? 
+  		<a onclick = "window.location.href='registration.html'" class = "header col s12 light link">Register Now</a><br><br></center></h5>
 <!--     </div> -->
-    <div class="parallax"><img src="./images/forestHikeA.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="./images/LastLights.png" alt="Unsplashed background img 1"></div>
   </div>
 
  
