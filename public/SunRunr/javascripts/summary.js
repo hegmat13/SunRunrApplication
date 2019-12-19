@@ -1,35 +1,30 @@
 //var divToChange = $("#ifFailure");
 
 var deviceId = "1f002a000e504b5350313120"; 
-var divToChange = $(".dataDiv");  
-
-$("#Create").click(createData); 
-
-loadDeviceData(); 
+var divToChange = $(".dataDiv");   
 
 function openNav() { document.getElementById("menu").style.width = "250px";}
 
 function closeNav() {document.getElementById("menu").style.width = "0";}
 
 function logout() {
-    document.getElementById("demo").style.color = "red";
     window.localStorage.removeItem('authToken');
     window.location.replace('login.html');
 }
 
 function createData() {
-console.log("connecter"); 
-var data = {
-  Date: "100",
-  uv: "100",
-  lon: "100",
-  lat: "100",
-  GPS_speed: "100",
-  deviceId: "1f002a000e504b5350313120",
-  apikey: "E0fqeTlyWMnyJzppbN6IRTrJW8DWfg2g"
-}
+  console.log("connecter"); 
+  var data = {
+    Date: Date.now(),
+    uv: ((500 + Math.random() * 40).toFixed(6)).toString(),
+    lon: "100",
+    lat: "100",
+    GPS_speed: ((4.8 + Math.random()*.4).toFixed(2)).toString(),
+    deviceId: "1f002a000e504b5350313120",
+    apikey: "E0fqeTlyWMnyJzppbN6IRTrJW8DWfg2g"
+  }
 
-  try {
+  // try {
     $.ajax({
     url: '/photon/hit',
     type: 'POST',
@@ -39,60 +34,65 @@ var data = {
     })
       .done(registerSuccess)
       .fail(registerError); 
-  } 
-  catch (ex) {
-    window.location = "./homepage.html";
-  }
+  // } 
+  // catch (ex) {
+  //   window.location = "./index.html";
+  // }
+}
 
-  function registerSuccess(data, textStatus, jqXHR) {
-    // window.location = "./homepage.html";  // TODO: Uncomment below
-    if (data.status == "OK") {  
-      console.log("success"); 
-     // window.location = "./homepage.html";
-     
-    }
-    else {
-      divToChange.html("<span class='red-text text-darken-2'>Error1: " + data.message + "</span>");
-      divToChange.show();
-    }
-  }
+function registerSuccess(data, textStatus, jqXHR) {
+  // window.location = "./homepage.html";  // TODO: Uncomment below
+  if (data.status == "OK") {  
+    console.log("success"); 
+  // window.location = "./homepage.html";
   
-  function registerError(jqXHR, textStatus, errorThrown) {
-    // window.location = "./homepage.html";  // TODO: Uncomment below
-    if (jqXHR.status == 404) {
-      divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
+  }
+  else {
+    divToChange.html("<span class='red-text text-darken-2'>Error1: " + data.message + "</span>");
     divToChange.show();
-    }
-    else {
-      response = JSON.parse(jqXHR.responseText); 
-      divToChange.html("<span class='red-text text-darken-2'>Error2: " + response.message + "</span>");
-      divToChange.show();
-    }
   }
 }
-          
 
-   
+function registerError(jqXHR, textStatus, errorThrown) {
+  window.location = "./index.html";  // TODO: Uncomment below
+  if (jqXHR.status == 404) {
+    divToChange.html("<span class='red-text text-darken-2'>Server could not be reached.</p>");
+  divToChange.show();
+  }
+  else {
+    response = JSON.parse(jqXHR.responseText); 
+    divToChange.html("<span class='red-text text-darken-2'>Error2: " + response.message + "</span>");
+    divToChange.show();
+  }
+}
 
 function loadDeviceData() {
   // let devID = $('#regDevice').val();
 
   //if (!isValidID()) return;
 
+  // $.ajax({
+  //   url: '/devices/data',
+  //   type: 'POST',
+  //   contentType: 'application/json',
+  //   data: JSON.stringify({deviceId : deviceId}),
+  //   dataType: 'json'
+  // })
+
   $.ajax({
-    url: '/devices/data',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({deviceId : deviceId}),
+    url: '/users/data',
+    type: 'GET',
+    headers: { 'x-auth': window.localStorage.getItem("authToken") },
     dataType: 'json'
   })
     .done(loadSuccess)
-    .fail(loadError);
+    .fail(loadSuccess); // TODO: Change to loadError after testing
 }
 
 function loadSuccess(data, textStatus, jqXHR) { // TODO: Needs to change
+  
   console.log(data); 
-  if (data.success) {
+  if (true) { //TODO: data.success
     let addHTML = '<p>Recorded posts from device:</p>';
 
     $('.formToRemove').addClass('hide');
@@ -102,8 +102,14 @@ function loadSuccess(data, textStatus, jqXHR) { // TODO: Needs to change
     let uv = 0.000000;
     let publishTime; 
     let uvtotal = 0.000000; 
-    let size = parseInt(data.data.length); 
-    let uvaverage = 0.000000; 
+    let totalduration = 0.000000;
+    let totalCal = 0.000000; 
+    let activityList = [];
+
+    for (let list of data.data) { //each list is one device ID's list of hwData
+      
+      totalduration += (list[list.length - 1] - list[0])/60000; //time in minutes of activity
+    }
 
 
     for (let obj of data.data) {
@@ -116,20 +122,15 @@ function loadSuccess(data, textStatus, jqXHR) { // TODO: Needs to change
      // addHTML += '<ul><li>Published: ' + publishTime + '</li><li>Latitude/Longitude: ' + lat + ' / ' + lon + '</li><li>Speed: ' + GPS_speed + ' knots</li><li>UV Reading: ' + uv + ' mW/cm&#178;</li></ul><br>';
     }
 
-    console.log(size); 
     console.log(uvtotal); 
-    uvaverage = uvtotal/size; 
 
-    console.log(uvaverage); 
-
-    $("#uv").html(uvaverage); 
+    $("#uv").html(uvtotal); 
     $("#duration").html(publishTime); 
 
     // parToEdit.html(addHTML);    
   }
   else {
-    divToChange.html("<span class='red-text text-darken-2'>Error1: " + data.message + "</span>");
-    divToChange.show();
+    console.log(data.errors)
   }
 }
   
@@ -178,15 +179,17 @@ function isValidID() {
 }
 
 $(function() {  
-  if (!window.localStorage.getItem('authToken')) {
-      window.location.replace('login.html');
-  }
-  else {
+  // if (!window.localStorage.getItem('authToken')) {
+  //     window.location.replace('login.html');
+  // }
+  // else {
+    $("#Create").click(createData);
+    loadDeviceData();
     $('.registerButton').click(loadDeviceData);
     $('#password').keypress(function(event) {
       if (event.which === 13) {
         loadDeviceData();
       }
     });
-  }
+  // }
 });

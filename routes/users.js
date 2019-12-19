@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 let User = require("../models/user");
 let Device = require("../models/device");
+var HwData = require("../models/hwdata");
 let fs = require('fs');
 let bcrypt = require("bcryptjs");
 let jwt = require("jwt-simple");
@@ -85,7 +86,7 @@ router.post('/newpw', function(req, res, next) {
    } catch (e) {
       return res.status(401).json({success: false, message: "Invalid authentication token."});
    }
-}
+});
 
 
 //  Changing email
@@ -209,5 +210,56 @@ router.get("/account" , function(req, res) {
    }
 });
 
+//Getting general 7-day summary
+router.get("/data" , function(req, res) {
+   // Check for authentication token in x-auth header
+   if (!req.headers["x-auth"]) {
+      return res.status(401).json({success: false, message: "No authentication token"});
+   }
+   
+   var authToken = req.headers["x-auth"];
+   
+   try {
+      var decodedToken = jwt.decode(authToken, secret);
+
+      Device.find( {username: decodedToken.username}, function(err, devices) {
+         if (!err) {
+            // Construct device list
+            var data = []; 
+            var errors = [];
+            for (device of devices) {
+               // deviceList.push({ 
+               //       deviceId: device.deviceId,
+               //       apikey: device.apikey,
+               // });
+               HwData.find({ deviceId : device.deviceId }, function(err, allData) {
+                  if (err) {
+                     errors.push({deviceId: device.deviceId, message : err});
+                  }
+                  else {
+                     let list = [];
+                     for(let doc of allData) {
+                        list.push({ deviceId : doc.deviceId, GPS_speed : doc.GPS_speed, lat : doc.lat, lon : doc.lon, uv : doc.uv, publishTime : doc.publishTime});
+                     }
+                     list.sort((a,b) => (a.publishTime < b.publishTime) ? 1 : -1); //sorts most recent first
+                     data.push(list);
+                  }
+               });
+            }
+            if (errors != []) {
+               return res.status(200).json({success: false, data: data, errors: errors});
+            }
+            else {
+               return res.status(200).json({success: true, data: data});
+            }
+         }
+         else {
+            return res.status(400).json({success: false, message: 'User has no registered devices.'})
+         }       
+      });
+   } catch (ex) { 
+      return res.status(401).json({success: false, message: "Invalid authentication token."});
+   }
+});
 
 module.exports = router;

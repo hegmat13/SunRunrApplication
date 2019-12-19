@@ -70,7 +70,7 @@
             <h2 class="center brown-text"><i class="material-icons">directions_bike</i></h2>
             <h5 class="center">Total Activity Duration<br>Last 7 Days</h5>
             <div class = "dataDiv"> 
-            <p class="light"><center id= "duration">DEVICE ID REQUIRED</center></p>
+            <p class="light"><center id= "duration">Loading...</center></p>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@
             <h2 class="center brown-text"><i class="material-icons">wb_sunny</i></h2>
             <h5 class="center">Total UV Exposure<br>Last 7 Days</h5>
             <div class = "dataDiv"> 
-            <p class="light" ><center id= "uv" >DEVICE ID REQUIRED</center></p>
+            <p class="light" ><center id= "uv" >Loading...</center></p>
             </div> 
           </div>
         </div>
@@ -90,7 +90,7 @@
             <h2 class="center brown-text"><i class="material-icons">grain</i></h2>
             <h5 class="center">Total Calories Burned<br>Last 7 Days</h5>
             <div class = "dataDiv"> 
-            <p class="light"><center id= "calories" >DEVICE ID REQUIRED</center></p>
+            <p class="light"><center id= "calories" >Loading...</center></p>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@
 
    <div class="container">
     <div class="section">
-      <table>
+      <table class='dynamicTable'>
         <tr>
           <th>Activity Date</th>
           <th>Activity Duration</th>
@@ -130,15 +130,15 @@
           <th>Go To Activity</th>
         </tr>
         <tr>
-          <td>12/5/2019</td> <!--month + "/" + date + "/" + year-->
+          <td>sample</td> <!--month + "/" + date + "/" + year-->
           <td>25 minutes</td> <!--Duration in minutes + "minutes"-->
           <td>75</td> <!--Calories-->
           <td>TBD</td> <!--UV Exposure value-->
           <td>69 F</td> <!--degrees + " F"-->
           <td>TBD</td> <!--Humidity Value-->
-          <td><a href="activityDetail.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Go to Activity</a></td> <!--Button to link to activity details-->
-        </tr>
-        <tr><!-- will want one row per activity summary-->
+          <td><a onclick=expandDiv() id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Go to Activity</a></td> <!--Button to link to activity details-->
+        </tr><!-- will want one row per activity summary-->
+        <tr>
           <td> </td> 
           <td> </td>
           <td> </td>
