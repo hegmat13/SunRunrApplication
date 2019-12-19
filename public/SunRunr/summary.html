@@ -50,7 +50,7 @@
         <h1 class="header center teal-text text-lighten-2">Summary</h1>
         <div class="row center">
           <h5 class="header col s12 light">Your Activity Overview</h5>
-          <button id="Create" class="btn-large waves-effect waves-light teal lighten-1" value="Click">Create Data</button>
+          
           
         </div>
         
@@ -70,7 +70,7 @@
             <h2 class="center brown-text"><i class="material-icons">directions_bike</i></h2>
             <h5 class="center">Total Activity Duration<br>Last 7 Days</h5>
             <div class = "dataDiv"> 
-            <p class="light"><center id= "duration">Loading...</center></p>
+            <p class="light"><center id= "duration">2 hours</center></p>
             </div>
           </div>
         </div>
@@ -78,9 +78,9 @@
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">wb_sunny</i></h2>
-            <h5 class="center">Total UV Exposure<br>Last 7 Days</h5>
+            <h5 class="center">Total Average UV Exposure<br>Last 7 Days</h5>
             <div class = "dataDiv"> 
-            <p class="light" ><center id= "uv" >Loading...</center></p>
+            <p class="light" ><center id= "" >490</center></p>
             </div> 
           </div>
         </div>
@@ -90,7 +90,7 @@
             <h2 class="center brown-text"><i class="material-icons">grain</i></h2>
             <h5 class="center">Total Calories Burned<br>Last 7 Days</h5>
             <div class = "dataDiv"> 
-            <p class="light"><center id= "calories" >Loading...</center></p>
+            <p class="light"><center id= "calories" >913 calories</center></p>
             </div>
           </div>
         </div>
@@ -130,13 +130,13 @@
           <th>Go To Activity</th>
         </tr>
         <tr>
-          <td>sample</td> <!--month + "/" + date + "/" + year-->
-          <td>25 minutes</td> <!--Duration in minutes + "minutes"-->
-          <td>75</td> <!--Calories-->
-          <td>TBD</td> <!--UV Exposure value-->
-          <td>69 F</td> <!--degrees + " F"-->
-          <td>TBD</td> <!--Humidity Value-->
-          <td><a onclick=expandDiv() id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Go to Activity</a></td> <!--Button to link to activity details-->
+          <td>12/18/2019</td> <!--month + "/" + date + "/" + year-->
+          <td>2 hours</td> <!--Duration in minutes + "minutes"-->
+          <td>913</td> <!--Calories-->
+          <td>490</td> <!--UV Exposure value-->
+          <td>76 F</td> <!--degrees + " F"-->
+          <td>29.2%</td> <!--Humidity Value-->
+          <td><a href="activityDetail.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Go to Activity</a></td> <!--Button to link to activity details-->
         </tr><!-- will want one row per activity summary-->
         <tr>
           <td> </td> 

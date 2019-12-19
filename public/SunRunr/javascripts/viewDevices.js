@@ -1,6 +1,6 @@
 var divToChange = $(".ErrorDiv");
 
-var deleteID = $("#deleteID").val(); 
+var deleteID = $(".regDevice").val(); 
 $("#5").click(deleteDevice); 
 
 getDevices(); 
@@ -79,7 +79,7 @@ function getDevices() {
 
 
   function deleteDevice() {
-    var deviceId = $("#deleteID").val(); 
+    var deviceId = $("#deleteDevice").val(); 
     console.log(deviceId); 
     try {
       $.ajax({
@@ -99,7 +99,7 @@ function getDevices() {
 
   function deleteSuccess (data, textStatus, jqXHR) {
     if(data.deleted == true) {
-      var deleteID = $("#deleteID").val(); 
+      var deleteID = $(".regDevice").val(); 
       deleteIdli = "#" + deleteID; 
       console.log(deleteIdli); 
       $(deleteIdli).remove(); 

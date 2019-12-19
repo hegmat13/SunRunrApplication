@@ -55,7 +55,7 @@
           <button id="2" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(2);"/>Update Password</button>  -->
           <!-- <button id="3" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(3);"/>Update Devices</button> -->
           <div class="col l6 s12">
-            <input class = "" type='text' pattern="/^[0-9a-f]{24}$/" id="regDevice" placeholder = "1f002a000e504b5350313120" required>
+            <input class = "regDevice" type='text' pattern="/^[0-9a-f]{24}$/" id="" placeholder = "1f002a000e504b5350313120" required>
           </div>
           <div class="col l6 s12">
             <button id="4" class="btn-large waves-effect waves-light teal lighten-1" value="Click">Add Device</button>
@@ -84,7 +84,7 @@
             <div class = "updateDiv">Here you can view your devices. To delete a device, simply click "delete" next to the device.</div>
             
             <div class="col l6 s12">
-              <input class = "regDevice" type='text' pattern="/^[0-9a-f]{24}$/" id="deleteID" placeholder = "1f002a000e504b5350313120" required>
+              <input class = "" id= "deleteDevice" type='text' pattern="/^[0-9a-f]{24}$/" placeholder = "1f002a000e504b5350313120" required>
             </div>
             <div class="col l6 s12">
               <button id="5" class="btn-large waves-effect waves-light teal lighten-1" value="Click">Delete Device</button>

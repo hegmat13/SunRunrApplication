@@ -4,7 +4,7 @@ $("#4").click(submitRegister);
 $("deleteDevice").click(isValidInput); 
 
 function submitRegister() {
-	let deviceId = $('.regDevice').val();
+  let deviceId = $('.regDevice').val();
     let username = window.localStorage.getItem('username');   //Get user email address from localStorage  
     console.log(username); 
     console.log(deviceId); 
@@ -45,7 +45,7 @@ function registerError(jqXHR, textStatus, errorThrown) {
   
 function isValidInput() {
   let isValid = true;
-  let deviceId = $('#regDevice').val();
+  let deviceId = $('.regDevice').val();
   let failHTML = '';
   let deviceIdRe = /^[0-9a-f]{24}$/;
 
