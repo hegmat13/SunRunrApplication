@@ -13,26 +13,124 @@ var secret = 'secret'; //fs.readFileSync(__dirname + '/../../jwtkey').toString()
 router.post('/login', function(req, res, next) {
   User.findOne({username: req.body.username}, function(err, user) {
     if (err) {
-       res.status(401).json({success : false, message : "Can't connect to DB."});         
+      return res.status(401).json({success : false, message : "Can't connect to DB."});         
     }
     else if(!user) {
-       res.status(401).json({success : false, message :  "username or password invalid."});         
+      return res.status(401).json({success : false, message :  "username or password invalid."});         
     }
     else {
       bcrypt.compare(req.body.password, user.passwordHash, function(err, valid) {
          if (err) {
-           res.status(401).json({success : false, message : "Error authenticating. Contact support." + user.passwordHash});         
+            return res.status(401).json({success : false, message : "Error authenticating. Contact support." + user.passwordHash});         
          }
          else if(valid) {
             var authToken = jwt.encode({username: req.body.username}, secret);
-            res.status(201).json({success:true, authToken: authToken});
+            return res.status(201).json({success:true, authToken: authToken});
          }
          else {
-            res.status(401).json({success : false, message : "username or password invalid."});         
+            return res.status(401).json({success : false, message : "username or password invalid."});         
          }
       });
     }
   });
+});
+
+// Changing password
+router.post('/newpw', function(req, res, next) {
+   if (!req.headers["x-auth"]) {
+      return res.status(401).json({success: false, message: "No authentication token"});
+   }
+   
+   var authToken = req.headers["x-auth"];
+
+   try {
+      var decodedToken = jwt.decode(authToken, secret);
+
+      User.findOne({username: decodedToken.username}, function(err, user) {
+         if (err) {
+           return res.status(401).json({success : false, message : "Can't connect to DB."});         
+         }
+         else if(!user) {
+           return res.status(401).json({success : false, message :  "invalid username in authtoken???"});         
+         }
+         else {
+            bcrypt.compare(req.body.oldp, user.passwordHash, function(err, valid) {
+               if (err) {
+                  return res.status(401).json({success : false, message : "Error authenticating password. Contact support." + user.passwordHash});         
+               }
+               else if(valid) {
+                  bcrypt.hash(req.body.newp, 10, function(err, hash) {
+                     if (err) {
+                        // res.status(400).json({success : false, message : err.errmsg});         
+                        res.status(400).json({success : false, message : 'cannot hash new password'});         
+                     }
+                     else { 
+                        User.updateOne({username: user.username}, {$set: {passwordHash: hash}}, function(err, user2) {
+                           if (err) {
+                              return res.status(400).json({success : false, message : 'could not update password'});
+                           }
+                           else {
+                              return res.status(201).json({success:true});
+                           }
+                        });
+                     }
+                  });
+               }
+               else {
+                  return res.status(401).json({success : false, flag: true, message : "Password is incorrect."});         
+               }
+            });
+         }
+       });
+   } catch (e) {
+      return res.status(401).json({success: false, message: "Invalid authentication token."});
+   }
+}
+
+
+//  Changing email
+router.post('/newemail', function(req, res, next) {
+   if (!req.headers["x-auth"]) {
+      return res.status(401).json({success: false, message: "No authentication token"});
+   }
+   
+   var authToken = req.headers["x-auth"];
+
+   try {
+      var decodedToken = jwt.decode(authToken, secret);
+      
+      User.findOne({username: decodedToken.username}, function(err, user) {
+         if (err) {
+            return res.status(401).json({success : false, message : "Can't connect to DB."});         
+         }
+         else if(!user) {
+            return res.status(401).json({success : false, message : 'invalid username stored in authToken???'});         
+         }
+         else {
+            User.findOne({username: req.body.username}, function(err, user2) {
+               if (err) {
+                  return res.status(401).json({success : false, message : "Can't connect to DB."}); 
+               }
+               else if (!user2) {
+                  User.updateOne({username: user.username}, {$set: {username: req.body.username}}, function(err, user3) {
+                     if (err) {
+                        return res.status(400).json({success : false, message : 'could not update password'});
+                     }
+                     else {
+                        return res.status(201).json({success:true});
+                     }
+                  });
+               }
+               else {
+                  return res.status(401).json({success : false, userExists: true, message : "Email already taken."});
+               }
+            });
+         }
+      });
+   } catch (e) {
+      return res.status(401).json({success: false, message: "Invalid authentication token."});
+   }
+
 });
 
 /* Register a new user */
@@ -51,10 +149,11 @@ router.post('/register', function(req, res, next) {
         
         newUser.save(function(err, user) {
           if (err) {
-             res.status(400).json({success : false, message : err.message});         
+            return res.status(400).json({success : false, message : err.message});         
           }
           else {
-             res.status(201).json({success : true, message : "Account with username " + user.username + "has been created."});                      
+            var authToken = jwt.encode({username: req.body.username}, secret);
+            return res.status(201).json({success : true, authToken: authToken, message : "Account with username " + user.username + "has been created."});                      
           }
         });
       }

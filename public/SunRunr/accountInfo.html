@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -28,9 +28,10 @@
         <li><a href="summary.html">Summary View</a></li>
         <li><a href="forecast.html">Forecast</a></li>
 <!--         <li><a href="accountInfo.html">Account Info</a></li> -->
-        <li><a href="login.html">Login</a></li>
-        <li><a href="registration.html">Register</a></li>
+        <!-- <li><a href="login.html">Login</a></li> -->
+        <!-- <li><a href="registration.html">Register</a></li> -->
         <li><a href="registerDevice.html">Add a Device</a></li>
+        <li><a onclick="logout()" href="#">Log out</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -38,8 +39,8 @@
         <li><a href="summary.html">Summary View</a></li>
         <li><a href="forecast.html">Forecast</a></li>
 <!--         <li><a href="accountInfo.html">Account Info</a></li> -->
-        <li><a href="login.html">Login</a></li>
-        <li><a href="registration.html">Register</a></li>
+        <!-- <li><a href="login.html">Login</a></li> -->
+        <!-- <li><a href="registration.html">Register</a></li> -->
         <li><a href="registerDevice.html">Add a Device</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -52,15 +53,21 @@
         <br><br>
         <h1 class="header center teal-text text-lighten-2">Account Info</h1>
         <div class="row center">
-          <button id="1" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(1);"/>Update Email</button> 
-          <button id="2" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(2);"/>Update Password</button> 
-          <button id="3" class="btn-large waves-effect waves-light teal lighten-1" value="Click" onclick="switchVisible(3);"/>Update Devices</button>
+          <button id="1" class="btn-large waves-effect waves-light teal lighten-1 hoverable" value="Click" onclick="switchVisible(1);"/>Update Email</button> 
+          <button id="2" class="btn-large waves-effect waves-light teal lighten-1 hoverable" value="Click" onclick="switchVisible(2);"/>Update Password</button> 
+          <button id="3" class="btn-large waves-effect waves-light teal lighten-1 hoverable" value="Click" onclick="switchVisible(3);"/>Update Devices</button>
         </div>
-        
+        <div class="row center">
+          <div class="col l6 s12">
+             <h5 class="white-text">Current Email</h5>
+          </div>
+          <div class='col l6 s12 actInfo'>
 
+          </div>
+        </div>
       </div>
     </div>
-    <div class="parallax"><img src="./images/desertRunB.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="./images/LastLights.png" alt="Unsplashed background img 1"></div>
   </div>
 
 
@@ -96,12 +103,13 @@
 				 			        </div>
 				  			      <div class="col l6 s12 email2">
 				   			        <input class = "inputEmail validate" type= "text" pattern = "[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id = "userName2" required value = "" placeholder = "email@SunRunr.com">
+                        
                       </div>
 				     		  </div>
 				    	   </div>
 				      </div>
 				      <div class="row center">
-				          <button id="email-button" class="btn-large waves-effect waves-light teal lighten-1" value = "Register">Update Email Address</a>
+				          <button id="email-button" class="btn-large hoverable waves-effect waves-light teal lighten-1" value = "Register">Update Email Address<i class="material-icons right">keyboard_arrow_right</i></a>
 				      </div>
 				 <!-- </form> -->
             </div>
@@ -115,8 +123,8 @@
 				      			  <div class="col l6 s12">
 				 			         <h5 class="white-text">Current Password</h5>
 				 			       </div>
-				  			      <div class="col l6 s12">
-				   			         <input type = "password" class = "inputPassword" type = "text" id = "oldPassword" required>
+				  			      <div class="col l6 s12 oldp">
+				   			         <input type = "password" class = "inputPassword oldp2" type = "text" id = "oldPassword" required>
 				       			  </div>
 				          </div>
 				    		  <div class="row">
@@ -131,7 +139,7 @@
 				    	   </div>
 				      </div>
 				      <div class="row center">
-				          <button id="password-button" class="btn-large waves-effect waves-light teal lighten-1" value = "Register">Update Password</a>
+				          <button id="password-button" class="btn-large hoverable waves-effect waves-light teal lighten-1" value = "Register">Update Password<i class="material-icons right">keyboard_arrow_right</i></a>
 				      </div>
 				 <!-- </form> -->
             </div>
@@ -187,10 +195,7 @@
         document.getElementById("Div3").style.display = "none";
       }
       else if(selected == 3){
-        console.log("Making Div3 Visible");
-        document.getElementById("Div1").style.display = "none";
-        document.getElementById("Div2").style.display = "none";
-        document.getElementById("Div3").style.display = "block";;
+        window.location.replace('registerDevice.html');
       }
     }
   </script>

@@ -38,7 +38,7 @@ function loginSuccess(data, textStatus, jqXHR) {
   if (data.success) {
     window.localStorage.setItem('authToken', data.authToken);
     window.localStorage.setItem('username', $('#userName').val()); 
-    window.location.replace("homepage.html");
+    window.location.replace("index.html");
   }
   else {
     divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
@@ -59,7 +59,7 @@ function loginError(jqXHR, textStatus, errorThrown) {
 
 $(function() {  
   if (window.localStorage.getItem('authToken')) {
-    window.location.replace('homepage.html'); // Detects if user is already logged in and redirects them if they are
+    window.location.replace('index.html'); // Detects if user is already logged in and redirects them if they are
   }
   else {
     $('#download-button').click(submitLogin);

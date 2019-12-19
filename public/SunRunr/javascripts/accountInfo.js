@@ -3,6 +3,7 @@ $(function() {
     //     window.location.replace('login.html');
     // }
     // else {
+        updatePageEmail();
         $('#email-button').click(changeEmail);
         $('#password-button').click(changePassword);
         $('#password').keypress(function(event) {
@@ -22,51 +23,121 @@ function logout() {
     window.location.replace('login.html');
 }
 
-function changeEmail() {
-    let newEmail = $('#userName').val();
-    let email2 = $('#userName2').val();
-
-    if (!isValidEmail()) return;
-
-    //TODO: check local token for email, then update in server.
-
-}
-
-function isValidEmail() {
-    let newEmail = $('#userName');
-    let email2 = $('#userName2');
-
-    if (newEmail[0].validity.valid && (newEmail.val() == email2.val())) {
-        return true;
-    }
-    if (newEmail.val() != email2.val()) {
-        $('.email2').append('<span class="helper-text" data-error="Emails do not match." data-success="Nooice."></span>');
-    } // TODO: make span removable and replace with original message on else{}
-
-    return false;
-}
-
-function changePassword() {
-
-    if (!isValidPassword()) return;
-
+function updatePageEmail() {
+    $('.actInfo').html('<h5 class="white-text">youshouldntseethis@test.com</h5>');
     $.ajax({
         url: '/users/account',
         type: 'GET',
         headers: { 'x-auth': window.localStorage.getItem("authToken") },
         dataType: 'json'
     })
-        .done(checkAndChangePW)
-        .fail(placeholder)
+        .done(function(data, textStatus, jqXHR) {
+            $('.actInfo').html('<h5 class="white-text">' + data.username + '</h5>');
+        })
+        .fail(function() {
+            $('.actInfo').html('<h5 class="red-text">Could not get email.</h5>');
+        })
 }
 
-function checkAndChangePW(data, textStatus, jqXHR) {
+function changeEmail() {
+    if (!isValidEmail()) return;
+
+    let username = $('#userName').val();
+
+    $.ajax({
+        url: '/users/newemail',
+        type: 'POST',
+        contentType: 'application/json',
+        headers: { 'x-auth': window.localStorage.getItem("authToken") },
+        data: JSON.stringify({username: username}),
+        dataType: 'json'
+    })
+        .done(emailSuccess)
+        .fail(emailError);
+}
+
+function isValidEmail() {
+    let newEmail = $('#userName');
+    let email2 = $('#userName2');
+    let trueEmail = window.localStorage.getItem('authToken');
+
+    if (newEmail[0].validity.valid && (newEmail.val() == email2.val()) && trueEmail.emai) {
+        return true;
+    }
+    if (newEmail.val() != email2.val()) {
+        $('.removable2').remove();
+        $('.email2').append('<span class="helper-text removable2" data-error="Emails do not match." data-success="Nooice."></span>');
+    }
+    else {
+        $('.removable2').remove();
+    }
+
+    return false;
+}
+
+function emailSuccess(data, textStatus, jqXHR) {
+    if (data.success) {
+        window.localStorage.removeItem('authToken');
+        window.localStorage.setItem('authToken', data.authToken);
+        $('.removable2').remove();
+        $('.email2').append('<span class="helper-text removable2" data-error="Idk how this happened but email changed." data-success="Email changed successfully."></span>');
+    }
+    else {
+      divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
+      divToChange.show();
+    }
+}
+
+function emailError(data, textStatus, jqXHR) {
+    if (data.hasOwnProperty('userExists')) {
+        $('.removable2').remove();
+        $('.email2').append('<span class="helper-text removable2 red-text">This email is already in use.</span>');
+    }
+    else {
+        divToChange.html("<span class='red-text text-darken-2'>Error: " + jqXHR.responseJSON.message + "</span>");
+        divToChange.show();
+    }
+}
+
+function changePassword() {
+
+    if (!isValidPassword()) return;
     let oldp = $('#oldPassword').val();
     let newp = $('#newPassword').val();
-    //TODO: Find way to do this:
-    //          1. Send both old and new password to server and handle password change in server for security
-    //          2. Get server to send back password, check, then send back request to change 
-    //          (will need new endpoint either way)
+
+    $.ajax({
+        url: '/users/newpw',
+        type: 'POST',
+        contentType: 'application/json',
+        headers: { 'x-auth': window.localStorage.getItem("authToken") },
+        data: JSON.stringify({oldp: oldp, newp: newp}),
+        dataType: 'json'
+    })
+        .done(passSuccess)
+        .fail(passError);
+}
+
+function passSuccess(data, textStatus, jqXHR) {
+    if (data.success) {
+        $('#removable').remove();
+        $('.pw').append('<span class="helper-text" id="removable">Password changed successfully.</span>');
+    }
+    else {
+      divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
+      divToChange.show();
+    }
+}
+
+function passError(data, textStatus, jqXHR) {
+    if (data.hasOwnProperty('flag')) {
+        $('#removable3').remove();
+        $('.oldp2').addClass('invalid');
+        $('.oldp').append('<span class="helper-text red-text" id="removable3">Password is incorrect.</span>');
+    }
+    else {
+        divToChange.html("<span class='red-text text-darken-2'>Error: " + data.message + "</span>");
+        divToChange.show();
+    }
 }
 
 function isValidPassword() {
